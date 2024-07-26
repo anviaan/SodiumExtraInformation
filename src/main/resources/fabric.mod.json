@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "sodium-extra-information",
+	"version": "${version}",
+	"name": "Sodium Extra Information",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/sodium-extra-information/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.anvian.sodiumextrainformation.SodiumExtraInformation"
+		],
+		"client": [
+			"net.anvian.sodiumextrainformation.SodiumExtraInformationClient"
+		]
+	},
+	"mixins": [
+		"sodium-extra-information.mixins.json",
+		{
+			"config": "sodium-extra-information.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.20.6",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
