@@ -47,6 +47,18 @@ public class SodiumExtraGameOptionPagesMixin {
                         .setControl(TickBoxControl::new)
                         .setBinding((opts, value) -> opts.extraInformationSettings.showSessionTime = value, opts -> opts.extraInformationSettings.showSessionTime)
                         .build())
+                .add(OptionImpl.createBuilder(Boolean.TYPE, sodiumExtraOpts)
+                        .setName(Text.of("Memory usage"))
+                        .setTooltip(Text.of("Show the memory usage on the overlay."))
+                        .setControl(TickBoxControl::new)
+                        .setBinding((opts, value) -> opts.extraInformationSettings.showMemoryUsage = value, opts -> opts.extraInformationSettings.showMemoryUsage)
+                        .build())
+                .add(OptionImpl.createBuilder(Boolean.TYPE, sodiumExtraOpts)
+                        .setName(Text.of("Memory usage Extended"))
+                        .setTooltip(Text.of("Show a more detailed memory usage on the overlay."))
+                        .setControl(TickBoxControl::new)
+                        .setBinding((opts, value) -> opts.extraInformationSettings.showMemoryUsageExtended = value, opts -> opts.extraInformationSettings.showMemoryUsageExtended)
+                        .build())
                 .build());
 
         cir.setReturnValue(new OptionPage(Text.translatable("sodium-extra.option.extras"), ImmutableList.copyOf(groups)));

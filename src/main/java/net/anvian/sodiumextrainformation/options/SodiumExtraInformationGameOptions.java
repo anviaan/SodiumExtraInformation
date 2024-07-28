@@ -95,12 +95,16 @@ public class SodiumExtraInformationGameOptions {
         public String localTimeFormat;
         public boolean showWordTime;
         public boolean showSessionTime;
+        public boolean showMemoryUsage;
+        public boolean showMemoryUsageExtended;
 
         public ExtraInformationSettings() {
             this.showLocalTime = false;
             this.localTimeFormat = "HH:mm";
             this.showWordTime = false;
             this.showSessionTime = false;
+            this.showMemoryUsage = false;
+            this.showMemoryUsageExtended = false;
         }
 
         private boolean validateTimeFormat(String format) {

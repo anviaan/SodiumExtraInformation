@@ -50,5 +50,20 @@ public class SodiumExtraHudMixin {
 
             textList.add(Text.of(hours + "h " + minutes + "m " + seconds + "s"));
         }
+
+        if (SodiumExtraInformationClient.options().extraInformationSettings.showMemoryUsage) {
+            Runtime runtime = Runtime.getRuntime();
+            long usedMemory = runtime.totalMemory() - runtime.freeMemory();
+            long maxMemory = runtime.maxMemory();
+
+            int memoryUsagePercent = (int) ((double) usedMemory / maxMemory * 100);
+            textList.add(Text.of(memoryUsagePercent + "%"));
+
+            if (SodiumExtraInformationClient.options().extraInformationSettings.showMemoryUsageExtended) {
+                long usedMemoryMB = usedMemory / (1024 * 1024);
+                long maxMemoryMB = maxMemory / (1024 * 1024);
+                textList.add(Text.of(usedMemoryMB + "MB / " + maxMemoryMB + "MB"));
+            }
+        }
     }
 }
