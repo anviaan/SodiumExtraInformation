@@ -4,7 +4,6 @@ import net.anvian.sodiumextrainformation.options.SodiumExtraInformationGameOptio
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.client.MinecraftClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,6 +17,7 @@ public class SodiumExtraInformationClient implements ClientModInitializer {
     private static long sessionStartTime;
     private static long totalTimePlayed;
     private static boolean inSession;
+    private static boolean isPaused;
 
     public static SodiumExtraInformationGameOptions options() {
         if (CONFIG == null) {
@@ -31,20 +31,32 @@ public class SodiumExtraInformationClient implements ClientModInitializer {
     public void onInitializeClient() {
         LOGGER.info("Hello from " + MOD_NAME + "!");
 
-        sessionStartTime = System.currentTimeMillis();
+        sessionStartTime = 0;
         totalTimePlayed = 0;
+        inSession = false;
+        isPaused = false;
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (MinecraftClient.getInstance().world != null && !inSession) {
+            if (client.world != null && !inSession) {
                 startSession();
-            } else if (MinecraftClient.getInstance().world == null && inSession) {
+            } else if (client.world == null && inSession) {
                 endSession();
             }
 
             if (inSession) {
-                long currentTime = System.currentTimeMillis();
-                totalTimePlayed += (currentTime - sessionStartTime);
-                sessionStartTime = currentTime;
+                if (client.isPaused()) {
+                    if (!isPaused) {
+                        pauseSession();
+                    }
+                } else {
+                    if (isPaused) {
+                        resumeSession();
+                    } else {
+                        long currentTime = System.currentTimeMillis();
+                        totalTimePlayed += (currentTime - sessionStartTime);
+                        sessionStartTime = currentTime;
+                    }
+                }
             }
         });
     }
@@ -52,10 +64,21 @@ public class SodiumExtraInformationClient implements ClientModInitializer {
     private void startSession() {
         sessionStartTime = System.currentTimeMillis();
         inSession = true;
+        isPaused = false;
     }
 
     private void endSession() {
         inSession = false;
+    }
+
+    private void pauseSession() {
+        isPaused = true;
+        totalTimePlayed += (System.currentTimeMillis() - sessionStartTime);
+    }
+
+    private void resumeSession() {
+        isPaused = false;
+        sessionStartTime = System.currentTimeMillis();
     }
 
     public static long getTotalTimePlayed() {
