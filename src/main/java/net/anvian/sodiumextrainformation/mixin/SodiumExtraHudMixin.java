@@ -41,5 +41,14 @@ public class SodiumExtraHudMixin {
                 textList.add(Text.of("Day: " + currentDay));
             }
         }
+
+        if (SodiumExtraInformationClient.options().extraInformationSettings.showSessionTime) {
+            long totalTimePlayed = SodiumExtraInformationClient.getTotalTimePlayed();
+            int hours = (int) (totalTimePlayed / 3600);
+            int minutes = (int) ((totalTimePlayed % 3600) / 60);
+            int seconds = (int) (totalTimePlayed % 60);
+
+            textList.add(Text.of(hours + "h " + minutes + "m " + seconds + "s"));
+        }
     }
 }
