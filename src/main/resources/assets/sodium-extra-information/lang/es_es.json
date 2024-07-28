@@ -1,0 +1,12 @@
+{
+    "sodium-extra-information.options.local_time": "Hora local",
+    "sodium-extra-information.options.local_time.tooltip": "Muestra la hora local en la superposición.",
+    "sodium-extra-information.options.word_time": "Hora mundial",
+    "sodium-extra-information.options.word_time.tooltip": "Muestra el tiempo empleado en el mundo (días) en la superposición.",
+    "sodium-extra-information.options.session_time": "Tiempo de sesión",
+    "sodium-extra-information.options.session_time.tooltip": "Muestra el tiempo que has estado en la sesión actual en la superposición.",
+    "sodium-extra-information.options.memory_usage": "Uso de memoria",
+    "sodium-extra-information.options.memory_usage.tooltip": "Muestra el uso de memoria en la superposición.",
+    "sodium-extra-information.options.memory_usage_extended": "Uso de memoria extendido",
+    "sodium-extra-information.options.memory_usage_extended.tooltip": "Muestra un uso de memoria más detallado en la superposición."
+}

@@ -1,0 +1,12 @@
+{
+    "sodium-extra-information.options.local_time": "當地時間",
+    "sodium-extra-information.options.local_time.tooltip": "在疊加層上顯示當地時間。",
+    "sodium-extra-information.options.word_time": "世界時間",
+    "sodium-extra-information.options.word_time.tooltip": "在疊加層中顯示在世界中花費的時間（天）。",
+    "sodium-extra-information.options.session_time": "會話時間",
+    "sodium-extra-information.options.session_time.tooltip": "在疊加層中顯示您在當前工作階段中的時間。",
+    "sodium-extra-information.options.memory_usage": "記憶體使用方式",
+    "sodium-extra-information.options.memory_usage.tooltip": "在疊加層上顯示記憶體使用方式。",
+    "sodium-extra-information.options.memory_usage_extended": "記憶體使用量延長",
+    "sodium-extra-information.options.memory_usage_extended.tooltip": "在疊加層上顯示更詳細的記憶體使用方式。"
+}

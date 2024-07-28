@@ -1,0 +1,12 @@
+{
+    "sodium-extra-information.options.local_time": "Местное время",
+    "sodium-extra-information.options.local_time.tooltip": "Покажите местное время на наложении.",
+    "sodium-extra-information.options.word_time": "Мировое время",
+    "sodium-extra-information.options.word_time.tooltip": "Отображает время, проведенное в мире (дни) в оверлее.",
+    "sodium-extra-information.options.session_time": "Время сеанса",
+    "sodium-extra-information.options.session_time.tooltip": "Покажите время, которое вы провели в текущем сеансе, в оверлее.",
+    "sodium-extra-information.options.memory_usage": "Использование памяти",
+    "sodium-extra-information.options.memory_usage.tooltip": "Отображение использования памяти на наложении.",
+    "sodium-extra-information.options.memory_usage_extended": "Увеличенное использование памяти",
+    "sodium-extra-information.options.memory_usage_extended.tooltip": "Покажите более подробную информацию об использовании памяти на наложении."
+}

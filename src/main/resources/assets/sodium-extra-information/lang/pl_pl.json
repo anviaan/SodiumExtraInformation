@@ -1,0 +1,12 @@
+{
+    "sodium-extra-information.options.local_time": "Czas lokalny",
+    "sodium-extra-information.options.local_time.tooltip": "Pokaż czas lokalny na nakładce.",
+    "sodium-extra-information.options.word_time": "Czas światowy",
+    "sodium-extra-information.options.word_time.tooltip": "Wyświetla czas spędzony w świecie (dni) w nakładce.",
+    "sodium-extra-information.options.session_time": "Czas sesji",
+    "sodium-extra-information.options.session_time.tooltip": "Pokaż czas, w którym byłeś w bieżącej sesji w nakładce.",
+    "sodium-extra-information.options.memory_usage": "Użycie pamięci",
+    "sodium-extra-information.options.memory_usage.tooltip": "Pokaż użycie pamięci na nakładce.",
+    "sodium-extra-information.options.memory_usage_extended": "Rozszerzone użycie pamięci",
+    "sodium-extra-information.options.memory_usage_extended.tooltip": "Pokaż bardziej szczegółowe użycie pamięci na nakładce."
+}

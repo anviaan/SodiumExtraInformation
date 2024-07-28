@@ -1,0 +1,12 @@
+{
+    "sodium-extra-information.options.local_time": "Ora locale",
+    "sodium-extra-information.options.local_time.tooltip": "Mostra l'ora locale sulla sovrapposizione.",
+    "sodium-extra-information.options.word_time": "Ora internazionale",
+    "sodium-extra-information.options.word_time.tooltip": "Visualizza il tempo trascorso nel mondo (giorni) nell'overlay.",
+    "sodium-extra-information.options.session_time": "Tempo di sessione",
+    "sodium-extra-information.options.session_time.tooltip": "Mostra l'ora in cui sei stato nella sessione corrente nell'overlay.",
+    "sodium-extra-information.options.memory_usage": "Utilizzo della memoria",
+    "sodium-extra-information.options.memory_usage.tooltip": "Mostra l'utilizzo della memoria nell'overlay.",
+    "sodium-extra-information.options.memory_usage_extended": "Utilizzo della memoria esteso",
+    "sodium-extra-information.options.memory_usage_extended.tooltip": "Mostra un utilizzo della memoria più dettagliato nell'overlay."
+}

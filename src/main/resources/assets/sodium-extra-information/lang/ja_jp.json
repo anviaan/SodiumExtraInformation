@@ -1,0 +1,12 @@
+{
+    "sodium-extra-information.options.local_time": "地域時刻",
+    "sodium-extra-information.options.local_time.tooltip": "オーバーレイに現地時間を表示します。",
+    "sodium-extra-information.options.word_time": "ワールドタイム",
+    "sodium-extra-information.options.word_time.tooltip": "ワールドで過ごした時間(日)をオーバーレイで表示します。",
+    "sodium-extra-information.options.session_time": "セッション時間",
+    "sodium-extra-information.options.session_time.tooltip": "現在のセッションに参加した時間をオーバーレイに表示します。",
+    "sodium-extra-information.options.memory_usage": "メモリ使用量",
+    "sodium-extra-information.options.memory_usage.tooltip": "オーバーレイにメモリ使用量を表示します。",
+    "sodium-extra-information.options.memory_usage_extended": "メモリ使用量の拡張",
+    "sodium-extra-information.options.memory_usage_extended.tooltip": "オーバーレイでより詳細なメモリ使用量を表示します。"
+}

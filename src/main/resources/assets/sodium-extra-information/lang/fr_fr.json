@@ -1,0 +1,12 @@
+{
+    "sodium-extra-information.options.local_time": "Heure locale",
+    "sodium-extra-information.options.local_time.tooltip": "Affichez l’heure locale sur la superposition.",
+    "sodium-extra-information.options.word_time": "Heure mondiale",
+    "sodium-extra-information.options.word_time.tooltip": "Affiche le temps passé dans le monde (jours) dans la superposition.",
+    "sodium-extra-information.options.session_time": "Heure de la séance",
+    "sodium-extra-information.options.session_time.tooltip": "Affichez le temps que vous avez passé dans la session en cours dans la superposition.",
+    "sodium-extra-information.options.memory_usage": "Utilisation de la mémoire",
+    "sodium-extra-information.options.memory_usage.tooltip": "Affichez l’utilisation de la mémoire sur la superposition.",
+    "sodium-extra-information.options.memory_usage_extended": "Utilisation de la mémoire prolongée",
+    "sodium-extra-information.options.memory_usage_extended.tooltip": "Affichez une utilisation plus détaillée de la mémoire sur la superposition."
+}
