@@ -33,5 +33,11 @@ public class SodiumExtraHudMixin {
 
             textList.add(Text.of(formattedNow));
         }
+
+        if (SodiumExtraInformationClient.options().extraInformationSettings.showWordTime) {
+            long worldTime = client.world.getTimeOfDay();
+            long currentDay = worldTime / 24000;
+            textList.add(Text.of("Day: " + currentDay));
+        }
     }
 }

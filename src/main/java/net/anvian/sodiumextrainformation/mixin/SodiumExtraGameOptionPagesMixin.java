@@ -31,9 +31,15 @@ public class SodiumExtraGameOptionPagesMixin {
         groups.add(OptionGroup.createBuilder()
                 .add(OptionImpl.createBuilder(Boolean.TYPE, sodiumExtraOpts)
                         .setName(Text.of("Local Time"))
-                        .setTooltip(Text.of("Show the local time in the top right corner of the screen"))
+                        .setTooltip(Text.of("Show the local time on the overlay"))
                         .setControl(TickBoxControl::new)
                         .setBinding((opts, value) -> opts.extraInformationSettings.showLocalTime = value, opts -> opts.extraInformationSettings.showLocalTime)
+                        .build())
+                .add(OptionImpl.createBuilder(Boolean.TYPE, sodiumExtraOpts)
+                        .setName(Text.of("Word time"))
+                        .setTooltip(Text.of("Show the word time on the overlay"))
+                        .setControl(TickBoxControl::new)
+                        .setBinding((opts, value) -> opts.extraInformationSettings.showWordTime = value, opts -> opts.extraInformationSettings.showWordTime)
                         .build())
                 .build());
 
