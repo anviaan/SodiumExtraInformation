@@ -27,7 +27,8 @@ public class SodiumExtraHudMixin {
         if (SodiumExtraInformationClient.options().extraInformationSettings.showLocalTime) {
             LocalDateTime now = LocalDateTime.now();
 
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+            String timeFormat = SodiumExtraInformationClient.options().extraInformationSettings.localTimeFormat;
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(timeFormat);
             String formattedNow = now.format(formatter);
 
             textList.add(Text.of(formattedNow));

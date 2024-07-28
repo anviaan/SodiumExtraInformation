@@ -10,14 +10,13 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class SodiumExtraInformationGameOptions {
     private static final Gson gson;
     public final ExtraInformationSettings extraInformationSettings = new ExtraInformationSettings();
     private File file;
-
-    public SodiumExtraInformationGameOptions() {
-    }
 
     public static SodiumExtraInformationGameOptions load(File file) {
         SodiumExtraInformationGameOptions config;
@@ -47,6 +46,11 @@ public class SodiumExtraInformationGameOptions {
         }
 
         config.file = file;
+
+        if (!config.extraInformationSettings.validateTimeFormat(config.extraInformationSettings.localTimeFormat)) {
+            config.extraInformationSettings.localTimeFormat = "HH:mm:ss";
+        }
+
         config.writeChanges();
         return config;
     }
@@ -88,9 +92,20 @@ public class SodiumExtraInformationGameOptions {
 
     public static class ExtraInformationSettings {
         public boolean showLocalTime;
+        public String localTimeFormat;
 
         public ExtraInformationSettings() {
             this.showLocalTime = false;
+            this.localTimeFormat = "HH:mm";
+        }
+
+        private boolean validateTimeFormat(String format) {
+            try {
+                DateTimeFormatter.ofPattern(format);
+                return true;
+            } catch (IllegalArgumentException | DateTimeParseException e) {
+                return false;
+            }
         }
     }
 }
