@@ -1,11 +1,14 @@
 {
-	"required": true,
-	"package": "net.anvian.sodiumextrainformation.mixin",
-	"compatibilityLevel": "JAVA_21",
-	"mixins": [
-		"ExampleMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
-	}
+  "required": true,
+  "package": "net.anvian.sodiumextrainformation.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "SodiumExtraGameOptionPagesMixin",
+    "SodiumExtraHudMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+  ]
 }
