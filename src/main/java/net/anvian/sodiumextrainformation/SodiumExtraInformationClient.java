@@ -1,9 +1,11 @@
 package net.anvian.sodiumextrainformation;
 
 import net.anvian.sodiumextrainformation.options.SodiumExtraInformationGameOptions;
+import net.anvian.sodiumextrainformation.util.SessionManager;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.MinecraftClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,76 +15,54 @@ public class SodiumExtraInformationClient implements ClientModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     private static SodiumExtraInformationGameOptions CONFIG;
-
-    private static long sessionStartTime;
-    private static long totalTimePlayed;
-    private static boolean inSession;
-    private static boolean isPaused;
+    public static final SessionManager SESSION_MANAGER = new SessionManager();
 
     public static SodiumExtraInformationGameOptions options() {
         if (CONFIG == null) {
             CONFIG = loadConfig();
         }
-
         return CONFIG;
     }
 
     @Override
     public void onInitializeClient() {
-        LOGGER.info("Hello from " + MOD_NAME + "!");
+        LOGGER.info("Hello from {}!", MOD_NAME);
 
-        sessionStartTime = 0;
-        totalTimePlayed = 0;
-        inSession = false;
-        isPaused = false;
+        SESSION_MANAGER.resetSession();
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (client.world != null && !inSession) {
-                startSession();
-            } else if (client.world == null && inSession) {
-                endSession();
-            }
-
-            if (inSession) {
-                if (client.isPaused()) {
-                    if (!isPaused) {
-                        pauseSession();
-                    }
-                } else {
-                    if (isPaused) {
-                        resumeSession();
-                    } else {
-                        long currentTime = System.currentTimeMillis();
-                        totalTimePlayed += (currentTime - sessionStartTime);
-                        sessionStartTime = currentTime;
-                    }
-                }
+            try {
+                handleClientTick(client);
+            } catch (Exception e) {
+                LOGGER.error("Error during client tick", e);
             }
         });
     }
 
-    private void startSession() {
-        sessionStartTime = System.currentTimeMillis();
-        inSession = true;
-        isPaused = false;
-    }
+    private void handleClientTick(MinecraftClient client) {
+        if (client.world != null && !SESSION_MANAGER.isInSession()) {
+            SESSION_MANAGER.startSession();
+        } else if (client.world == null && SESSION_MANAGER.isInSession()) {
+            SESSION_MANAGER.endSession();
+        }
 
-    private void endSession() {
-        inSession = false;
-    }
-
-    private void pauseSession() {
-        isPaused = true;
-        totalTimePlayed += (System.currentTimeMillis() - sessionStartTime);
-    }
-
-    private void resumeSession() {
-        isPaused = false;
-        sessionStartTime = System.currentTimeMillis();
+        if (SESSION_MANAGER.isInSession()) {
+            if (client.isPaused()) {
+                if (!SESSION_MANAGER.isPaused()) {
+                    SESSION_MANAGER.pauseSession();
+                }
+            } else {
+                if (SESSION_MANAGER.isPaused()) {
+                    SESSION_MANAGER.resumeSession();
+                } else {
+                    SESSION_MANAGER.updateSessionTime();
+                }
+            }
+        }
     }
 
     public static long getTotalTimePlayed() {
-        return totalTimePlayed / 1000;
+        return SESSION_MANAGER.getTotalTimePlayed();
     }
 
     private static SodiumExtraInformationGameOptions loadConfig() {
