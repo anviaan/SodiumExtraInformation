@@ -3,12 +3,12 @@
 	"id": "sodium-extra-information",
 	"version": "${version}",
 	"name": "Sodium Extra Information",
-	"description": "A Sodium addon that adds more in-game information.",
+	"description": "A Sodium Extra addon that adds more in-game information.",
 	"authors": [
 		"anvian"
 	],
 	"contact": {
-		"homepage": "",
+		"homepage": "https://modrinth.com/mod/sodium-extra-information",
 		"sources": "https://github.com/anviaan/SodiumExtraInformation",
 		"issues": "https://github.com/anviaan/SodiumExtraInformation/issues"
 	},
