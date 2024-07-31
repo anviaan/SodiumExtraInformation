@@ -16,3 +16,6 @@ Sodium Extra Information is a mod for Minecraft that adds extra information to t
 3. Go to extra menu from Sodium Extra
 4. Scroll down to the options below
 5. Enable the features you want to use
+
+### Issues or Suggestions
+If you have any issues or suggestions, please create an issue on the [GitHub repository](https://github.com/anviaan/SodiumExtraInformation/issues)
