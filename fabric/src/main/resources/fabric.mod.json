@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${version}",
+  "name": "${mod_name}",
+  "description": "${description}",
+  "authors": [
+    "${mod_author}"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/sodium-extra-information",
+    "sources": "https://github.com/anviaan/SodiumExtraInformation",
+    "issues": "https://github.com/anviaan/SodiumExtraInformation/issues"
+  },
+  "license": "${license}",
+  "icon": "${mod_id}.png",
+  "environment": "client",
+  "custom": {
+    "modmenu": {
+      "parent": {
+        "id": "sodium"
+      },
+      "links": {
+        "modmenu.curseforge": "https://www.curseforge.com/minecraft/mc-mods/sodium-extra-information",
+        "modmenu.modrinth": "https://modrinth.com/mod/sodium-extra-information"
+      }
+    }
+  },
+  "entrypoints": {
+    "client": [
+      "net.anvian.sodiumextrainformation.FabricMod"
+    ]
+  },
+  "mixins": [
+    "${mod_id}.mixins.json",
+    "${mod_id}.fabric.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${fabric_loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}",
+    "sodium": ">=0.6.0-beta.1",
+    "sodium-extra": ">=0.6.0-beta.1",
+    "java": ">=${java_version}"
+  },
+  "breaks": {
+    "iris": "<1.7.0",
+    "reeses-sodium-options": "<1.4.2"
+  },
+  "recommends": {
+    "reeses-sodium-options": ">=1.4.2"
+  }
+}
+  
