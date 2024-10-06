@@ -1,0 +1,19 @@
+{
+    "sodium-extra-information.options.local_time": "Ora locale",
+    "sodium-extra-information.options.local_time.tooltip": "Mostra l'ora locale nella sovrapposizione.",
+    "sodium-extra-information.options.word_time": "Ora mondiale",
+    "sodium-extra-information.options.word_time.tooltip": "Visualizza il tempo trascorso nel mondo (giorni) nella sovrapposizione.",
+    "sodium-extra-information.hud.word_time": "Giorno",
+    "sodium-extra-information.options.session_time": "Tempo di sessione",
+    "sodium-extra-information.options.session_time.tooltip": "Mostra nella sovrimpressione il tempo trascorso nella sessione corrente.",
+    "sodium-extra-information.options.memory_usage": "Utilizzo della memoria",
+    "sodium-extra-information.options.memory_usage.tooltip": "Mostra l'utilizzo della memoria nella sovrapposizione.",
+    "sodium-extra-information.options.memory_usage_extended": "Utilizzo della memoria esteso",
+    "sodium-extra-information.options.memory_usage_extended.tooltip": "Mostra un utilizzo della memoria più dettagliato nella sovrapposizione.",
+    "sodium-extra-information.options.show_total_entity_count": "Mostra il conteggio totale delle entità",
+    "sodium-extra-information.options.show_total_entity_count.tooltip": "Mostra il conteggio totale delle entità nel mondo.",
+    "sodium-extra-information.hud.show_total_entity_count": "Totale entità",
+    "sodium-extra-information.options.shows_rendered_entities": "Mostra entità renderizzate",
+    "sodium-extra-information.options.shows_rendered_entities.tooltip": "Mostra il numero di entità visualizzate sullo schermo.",
+    "sodium-extra-information.hud.shows_rendered_entities": "Entità renderizzate"
+}

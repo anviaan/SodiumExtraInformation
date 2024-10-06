@@ -1,0 +1,25 @@
+{
+  "sodium-extra-information.options.local_time": "Local Time",
+  "sodium-extra-information.options.local_time.tooltip": "Show the local time on the overlay.",
+
+  "sodium-extra-information.options.word_time": "World Time",
+  "sodium-extra-information.options.word_time.tooltip": "Displays the time spent in the world(days) in the overlay.",
+  "sodium-extra-information.hud.word_time": "Day",
+
+  "sodium-extra-information.options.session_time": "Session time",
+  "sodium-extra-information.options.session_time.tooltip": "Show the time you have been in the current session in the overlay.",
+
+  "sodium-extra-information.options.memory_usage": "Memory usage",
+  "sodium-extra-information.options.memory_usage.tooltip": "Show the memory usage on the overlay.",
+
+  "sodium-extra-information.options.memory_usage_extended": "Memory usage extended",
+  "sodium-extra-information.options.memory_usage_extended.tooltip": "Show a more detailed memory usage on the overlay.",
+
+  "sodium-extra-information.options.show_total_entity_count": "Show total entity count",
+  "sodium-extra-information.options.show_total_entity_count.tooltip":"Show the total entity count on the world.",
+  "sodium-extra-information.hud.show_total_entity_count": "Total Entities",
+
+  "sodium-extra-information.options.shows_rendered_entities": "Show Rendered Entities",
+  "sodium-extra-information.options.shows_rendered_entities.tooltip":"Show the number of entities that are rendered on the screen.",
+  "sodium-extra-information.hud.shows_rendered_entities": "Rendered Entities"
+}

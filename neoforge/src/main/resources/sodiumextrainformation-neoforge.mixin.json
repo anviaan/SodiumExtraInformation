@@ -1,0 +1,15 @@
+{
+  "package" : "net.anvian.sodiumextrainformation.mixin",
+  "required" : true,
+  "compatibilityLevel" : "JAVA_17",
+  "refmap" : "sodiumextrainformation.refmap.json",
+  "injectors" : {
+    "defaultRequire" : 1
+  },
+  "overwrites" : {
+    "conformVisibility" : true
+  },
+  "client" : [
+    "EntrypointMixin"
+  ]
+}

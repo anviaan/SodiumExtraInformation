@@ -3,7 +3,8 @@ package net.anvian.sodiumextrainformation.options;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import net.anvian.sodiumextrainformation.platform.services.IPlatformHelper;
+import net.anvian.sodiumextrainformation.client.SodiumExtraInformationClientMod;
+import net.caffeinemc.mods.sodium.client.services.PlatformRuntimeInformation;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -15,12 +16,12 @@ import java.time.format.DateTimeParseException;
 
 public class SodiumExtraInformationGameOptions {
     public final ExtraInformationSettings extraInformationSettings = new ExtraInformationSettings();
-    private static final String DEFAULT_FILE_NAME = "sodium-extra-information-options.json";
+    private static final String DEFAULT_FILE_NAME = SodiumExtraInformationClientMod.MOD_ID + ".json";
     private static final Gson GSON = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).setPrettyPrinting().excludeFieldsWithModifiers(Modifier.PRIVATE).create();
     private Path configPath;
 
     public static SodiumExtraInformationGameOptions load() {
-        Path path = IPlatformHelper.INSTANCE.getConfigDirectory().resolve(DEFAULT_FILE_NAME);
+        Path path = PlatformRuntimeInformation.getInstance().getConfigDirectory().resolve(DEFAULT_FILE_NAME);
         SodiumExtraInformationGameOptions config;
 
         if (Files.exists(path)) {

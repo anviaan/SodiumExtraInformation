@@ -1,0 +1,19 @@
+{
+    "sodium-extra-information.options.local_time": "Czas lokalny",
+    "sodium-extra-information.options.local_time.tooltip": "Pokaż czas lokalny na nakładce.",
+    "sodium-extra-information.options.word_time": "Czas światowy",
+    "sodium-extra-information.options.word_time.tooltip": "Wyświetla w nakładce czas spędzony na świecie (dni).",
+    "sodium-extra-information.hud.word_time": "Dzień",
+    "sodium-extra-information.options.session_time": "Czas sesji",
+    "sodium-extra-information.options.session_time.tooltip": "Wyświetla w nakładce czas trwania bieżącej sesji.",
+    "sodium-extra-information.options.memory_usage": "Wykorzystanie pamięci",
+    "sodium-extra-information.options.memory_usage.tooltip": "Pokaż wykorzystanie pamięci na nakładce.",
+    "sodium-extra-information.options.memory_usage_extended": "Rozszerzone wykorzystanie pamięci",
+    "sodium-extra-information.options.memory_usage_extended.tooltip": "Pokaż bardziej szczegółowe wykorzystanie pamięci na nakładce.",
+    "sodium-extra-information.options.show_total_entity_count": "Pokaż całkowitą liczbę jednostek",
+    "sodium-extra-information.options.show_total_entity_count.tooltip": "Pokaż całkowitą liczbę jednostek na świecie.",
+    "sodium-extra-information.hud.show_total_entity_count": "Łączna liczba podmiotów",
+    "sodium-extra-information.options.shows_rendered_entities": "Pokaż renderowane jednostki",
+    "sodium-extra-information.options.shows_rendered_entities.tooltip": "Pokaż liczbę jednostek renderowanych na ekranie.",
+    "sodium-extra-information.hud.shows_rendered_entities": "Wyrenderowane jednostki"
+}

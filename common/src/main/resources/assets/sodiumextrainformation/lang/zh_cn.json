@@ -1,0 +1,19 @@
+{
+    "sodium-extra-information.options.local_time": "当地时间",
+    "sodium-extra-information.options.local_time.tooltip": "在覆盖层上显示当地时间。",
+    "sodium-extra-information.options.word_time": "世界时间",
+    "sodium-extra-information.options.word_time.tooltip": "在覆盖层中显示在世界各地度过的时间（天）。",
+    "sodium-extra-information.hud.word_time": "天",
+    "sodium-extra-information.options.session_time": "会议时间",
+    "sodium-extra-information.options.session_time.tooltip": "在覆盖层中显示您处于当前会话中的时间。",
+    "sodium-extra-information.options.memory_usage": "内存使用情况",
+    "sodium-extra-information.options.memory_usage.tooltip": "在覆盖层上显示内存使用情况。",
+    "sodium-extra-information.options.memory_usage_extended": "内存使用量扩展",
+    "sodium-extra-information.options.memory_usage_extended.tooltip": "在覆盖上显示更详细的内存使用情况。",
+    "sodium-extra-information.options.show_total_entity_count": "显示实体总数",
+    "sodium-extra-information.options.show_total_entity_count.tooltip": "显示世界上的实体总数。",
+    "sodium-extra-information.hud.show_total_entity_count": "实体总数",
+    "sodium-extra-information.options.shows_rendered_entities": "显示渲染实体",
+    "sodium-extra-information.options.shows_rendered_entities.tooltip": "显示在屏幕上呈现的实体数量。",
+    "sodium-extra-information.hud.shows_rendered_entities": "渲染实体"
+}

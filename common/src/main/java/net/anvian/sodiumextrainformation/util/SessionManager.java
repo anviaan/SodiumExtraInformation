@@ -1,10 +1,10 @@
 package net.anvian.sodiumextrainformation.util;
 
-import net.anvian.sodiumextrainformation.Constants;
+import net.anvian.sodiumextrainformation.client.SodiumExtraInformationClientMod;
 import org.slf4j.Logger;
 
 public class SessionManager {
-    private static final Logger LOGGER = Constants.LOG;
+    private static final Logger LOGGER = SodiumExtraInformationClientMod.logger();
 
     private long sessionStartTime;
     private long totalTimePlayed;

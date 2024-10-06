@@ -1,0 +1,19 @@
+{
+    "sodium-extra-information.options.local_time": "當地時間",
+    "sodium-extra-information.options.local_time.tooltip": "在疊加層上顯示當地時間。",
+    "sodium-extra-information.options.word_time": "世界時間",
+    "sodium-extra-information.options.word_time.tooltip": "在疊加層中顯示在世界上花費的時間（天）。",
+    "sodium-extra-information.hud.word_time": "天",
+    "sodium-extra-information.options.session_time": "會議時間",
+    "sodium-extra-information.options.session_time.tooltip": "在疊加層中顯示您在目前會話中的時間。",
+    "sodium-extra-information.options.memory_usage": "記憶體使用情況",
+    "sodium-extra-information.options.memory_usage.tooltip": "在覆蓋層上顯示記憶體使用量。",
+    "sodium-extra-information.options.memory_usage_extended": "記憶體使用擴展",
+    "sodium-extra-information.options.memory_usage_extended.tooltip": "在覆蓋層上顯示更詳細的記憶體使用情況。",
+    "sodium-extra-information.options.show_total_entity_count": "顯示實體總數",
+    "sodium-extra-information.options.show_total_entity_count.tooltip": "顯示世界上的實體總數。",
+    "sodium-extra-information.hud.show_total_entity_count": "實體總數",
+    "sodium-extra-information.options.shows_rendered_entities": "顯示渲染實體",
+    "sodium-extra-information.options.shows_rendered_entities.tooltip": "顯示螢幕上呈現的實體數量。",
+    "sodium-extra-information.hud.shows_rendered_entities": "渲染實體"
+}

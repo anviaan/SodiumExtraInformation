@@ -1,0 +1,19 @@
+{
+    "sodium-extra-information.options.local_time": "現地時間",
+    "sodium-extra-information.options.local_time.tooltip": "オーバーレイに現地時間を表示します。",
+    "sodium-extra-information.options.word_time": "ワールドタイム",
+    "sodium-extra-information.options.word_time.tooltip": "オーバーレイに世界で過ごした時間（日数）を表示します。",
+    "sodium-extra-information.hud.word_time": "日",
+    "sodium-extra-information.options.session_time": "セッション時間",
+    "sodium-extra-information.options.session_time.tooltip": "現在のセッションの時間をオーバーレイに表示します。",
+    "sodium-extra-information.options.memory_usage": "メモリ使用量",
+    "sodium-extra-information.options.memory_usage.tooltip": "オーバーレイにメモリ使用量を表示します。",
+    "sodium-extra-information.options.memory_usage_extended": "メモリ使用量の拡張",
+    "sodium-extra-information.options.memory_usage_extended.tooltip": "オーバーレイにさらに詳細なメモリ使用量を表示します。",
+    "sodium-extra-information.options.show_total_entity_count": "エンティティの総数を表示",
+    "sodium-extra-information.options.show_total_entity_count.tooltip": "ワールド上のエンティティの総数を表示します。",
+    "sodium-extra-information.hud.show_total_entity_count": "エンティティ合計",
+    "sodium-extra-information.options.shows_rendered_entities": "レンダリングされたエンティティを表示",
+    "sodium-extra-information.options.shows_rendered_entities.tooltip": "画面上にレンダリングされるエンティティの数を表示します。",
+    "sodium-extra-information.hud.shows_rendered_entities": "レンダリングされたエンティティ"
+}

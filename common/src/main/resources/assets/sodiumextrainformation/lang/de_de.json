@@ -1,0 +1,19 @@
+{
+    "sodium-extra-information.options.local_time": "Ortszeit",
+    "sodium-extra-information.options.local_time.tooltip": "Zeigen Sie die Ortszeit auf dem Overlay an.",
+    "sodium-extra-information.options.word_time": "Weltzeit",
+    "sodium-extra-information.options.word_time.tooltip": "Zeigt im Overlay die in der Welt verbrachte Zeit (Tage) an.",
+    "sodium-extra-information.hud.word_time": "Tag",
+    "sodium-extra-information.options.session_time": "Sitzungsdauer",
+    "sodium-extra-information.options.session_time.tooltip": "Zeigen Sie im Overlay die Zeit an, die Sie in der aktuellen Sitzung verbracht haben.",
+    "sodium-extra-information.options.memory_usage": "Speichernutzung",
+    "sodium-extra-information.options.memory_usage.tooltip": "Zeigen Sie die Speichernutzung im Overlay an.",
+    "sodium-extra-information.options.memory_usage_extended": "Speichernutzung erweitert",
+    "sodium-extra-information.options.memory_usage_extended.tooltip": "Zeigen Sie im Overlay eine detailliertere Speichernutzung an.",
+    "sodium-extra-information.options.show_total_entity_count": "Gesamtzahl der Entitäten anzeigen",
+    "sodium-extra-information.options.show_total_entity_count.tooltip": "Zeigt die Gesamtzahl der Entitäten auf der Welt an.",
+    "sodium-extra-information.hud.show_total_entity_count": "Einheiten insgesamt",
+    "sodium-extra-information.options.shows_rendered_entities": "Gerenderte Objekte anzeigen",
+    "sodium-extra-information.options.shows_rendered_entities.tooltip": "Zeigt die Anzahl der Entitäten an, die auf dem Bildschirm gerendert werden.",
+    "sodium-extra-information.hud.shows_rendered_entities": "Gerenderte Objekte"
+}

@@ -1,0 +1,19 @@
+{
+    "sodium-extra-information.options.local_time": "Местное время",
+    "sodium-extra-information.options.local_time.tooltip": "Показывать местное время на накладке.",
+    "sodium-extra-information.options.word_time": "Мировое время",
+    "sodium-extra-information.options.word_time.tooltip": "Отображает время, проведенное в мире (дни), в наложении.",
+    "sodium-extra-information.hud.word_time": "День",
+    "sodium-extra-information.options.session_time": "Время сеанса",
+    "sodium-extra-information.options.session_time.tooltip": "Покажите в наложении время, в течение которого вы находились в текущем сеансе.",
+    "sodium-extra-information.options.memory_usage": "Использование памяти",
+    "sodium-extra-information.options.memory_usage.tooltip": "Показывать использование памяти на оверлее.",
+    "sodium-extra-information.options.memory_usage_extended": "Использование памяти расширено",
+    "sodium-extra-information.options.memory_usage_extended.tooltip": "Покажите более подробную информацию об использовании памяти на наложении.",
+    "sodium-extra-information.options.show_total_entity_count": "Показать общее количество сущностей",
+    "sodium-extra-information.options.show_total_entity_count.tooltip": "Показать общее количество сущностей в мире.",
+    "sodium-extra-information.hud.show_total_entity_count": "Всего сущностей",
+    "sodium-extra-information.options.shows_rendered_entities": "Показать визуализированные сущности",
+    "sodium-extra-information.options.shows_rendered_entities.tooltip": "Показывать количество сущностей, отображаемых на экране.",
+    "sodium-extra-information.hud.shows_rendered_entities": "Визуализированные сущности"
+}

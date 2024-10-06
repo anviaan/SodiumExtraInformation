@@ -1,36 +1,38 @@
 modLoader = "javafml"
-loaderVersion = "${neoforge_loader_version_range}"
-license = "${license}"
+loaderVersion = "*"
+license = "GPLv3"
 issueTrackerURL="https://github.com/anviaan/SodiumExtraInformation/issues"
+
 [[mods]]
-modId = "${mod_id}"
-version = "${version}"
-displayName = "${mod_name}"
-updateJSONURL="https://api.modrinth.com/updates/696WgnvT/forge_updates.json"
-displayURL="https://modrinth.com/mod/sodium-extra-information"
-logoFile="${mod_id}.png"
-credits="${credits}"
-authors = "${mod_author}"
-description = '''${description}'''
-[[mixins]]
-config = "${mod_id}.mixins.json"
-[[mixins]]
-config = "${mod_id}.neoforge.mixins.json"
-[[dependencies.${mod_id}]]
-modId = "neoforge"
-type="required"
-versionRange = "[${neoforge_version},)"
-ordering = "NONE"
-side = "CLIENT"
-[[dependencies.${mod_id}]]
+modId = "sodiumextrainformation"
+
+version = "2.0-beta.1"
+displayName = "Sodium Extra Information"
+
+logoFile = "sodiumextrainformation.png"
+
+authors = "anvian"
+
+description = '''
+A Sodium Extra addon that adds more in-game information.
+'''
+
+[[dependencies.sodiumextrainformation]]
 modId = "minecraft"
-type="required"
-versionRange = "${minecraft_version_range}"
+type = "required"
+versionRange = "[1.20.4,1.21.1)"
 ordering = "NONE"
 side = "CLIENT"
-[[dependencies.${mod_id}]]
+
+[[dependencies.sodiumextrainformation]]
 modId = "sodium"
 type = "required"
-versionRange = "[0.6.0-beta.1,0.6.0)"
+versionRange = "[0.6.0-beta.2,0.6.0)"
 ordering = "NONE"
 side = "CLIENT"
+
+[[mixins]]
+config = "sodiumextrainformation.mixins.json"
+
+[[mixins]]
+config = "sodiumextrainformation-neoforge.mixin.json"

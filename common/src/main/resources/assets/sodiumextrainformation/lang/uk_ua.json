@@ -1,0 +1,19 @@
+{
+    "sodium-extra-information.options.local_time": "Місцевий час",
+    "sodium-extra-information.options.local_time.tooltip": "Показати місцевий час на накладці.",
+    "sodium-extra-information.options.word_time": "Всесвітній час",
+    "sodium-extra-information.options.word_time.tooltip": "Відображає час, проведений у світі (дні) у накладенні.",
+    "sodium-extra-information.hud.word_time": "День",
+    "sodium-extra-information.options.session_time": "Час сеансу",
+    "sodium-extra-information.options.session_time.tooltip": "Показати час, який ви провели в поточному сеансі, у накладці.",
+    "sodium-extra-information.options.memory_usage": "Використання пам'яті",
+    "sodium-extra-information.options.memory_usage.tooltip": "Показати використання пам'яті на накладці.",
+    "sodium-extra-information.options.memory_usage_extended": "Розширено використання пам'яті",
+    "sodium-extra-information.options.memory_usage_extended.tooltip": "Показати більш детальну інформацію про використання пам’яті на накладці.",
+    "sodium-extra-information.options.show_total_entity_count": "Показати загальну кількість об’єктів",
+    "sodium-extra-information.options.show_total_entity_count.tooltip": "Показати загальну кількість сутностей у світі.",
+    "sodium-extra-information.hud.show_total_entity_count": "Всього сутностей",
+    "sodium-extra-information.options.shows_rendered_entities": "Показати відтворені сутності",
+    "sodium-extra-information.options.shows_rendered_entities.tooltip": "Показати кількість сутностей, які відображаються на екрані.",
+    "sodium-extra-information.hud.shows_rendered_entities": "Відтворені сутності"
+}

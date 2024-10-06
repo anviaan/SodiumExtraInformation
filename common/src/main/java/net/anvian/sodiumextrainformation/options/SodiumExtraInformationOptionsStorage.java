@@ -1,13 +1,12 @@
 package net.anvian.sodiumextrainformation.options;
 
-import net.anvian.sodiumextrainformation.CommonMod;
-import net.anvian.sodiumextrainformation.Constants;
+import net.anvian.sodiumextrainformation.client.SodiumExtraInformationClientMod;
 import net.caffeinemc.mods.sodium.client.gui.options.storage.OptionStorage;
 
 import java.io.IOException;
 
 public class SodiumExtraInformationOptionsStorage implements OptionStorage<SodiumExtraInformationGameOptions> {
-    private final SodiumExtraInformationGameOptions options = CommonMod.options();
+    private final SodiumExtraInformationGameOptions options = SodiumExtraInformationClientMod.options();
 
     @Override
     public SodiumExtraInformationGameOptions getData() {
@@ -22,6 +21,6 @@ public class SodiumExtraInformationOptionsStorage implements OptionStorage<Sodiu
             throw new RuntimeException("Failed to save options", e);
         }
 
-        Constants.LOG.info("Saved options");
+        SodiumExtraInformationClientMod.logger().info("Saved options");
     }
 }

@@ -1,6 +1,6 @@
 package net.anvian.sodiumextrainformation.mixin;
 
-import net.anvian.sodiumextrainformation.CommonMod;
+import net.anvian.sodiumextrainformation.client.SodiumExtraInformationClientMod;
 import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -17,23 +17,23 @@ public class EndTickMixin {
 
     @Unique
     private void sodiumExtraInformation$handleClientTick(Minecraft client) {
-        if (client.level != null && !CommonMod.SESSION_MANAGER.isInSession()) {
-            CommonMod.SESSION_MANAGER.startSession();
-        } else if (client.level == null && CommonMod.SESSION_MANAGER.isInSession()) {
-            CommonMod.SESSION_MANAGER.endSession();
-            CommonMod.SESSION_MANAGER.resetSession();
+        if (client.level != null && !SodiumExtraInformationClientMod.SESSION_MANAGER.isInSession()) {
+            SodiumExtraInformationClientMod.SESSION_MANAGER.startSession();
+        } else if (client.level == null && SodiumExtraInformationClientMod.SESSION_MANAGER.isInSession()) {
+            SodiumExtraInformationClientMod.SESSION_MANAGER.endSession();
+            SodiumExtraInformationClientMod.SESSION_MANAGER.resetSession();
         }
 
-        if (CommonMod.SESSION_MANAGER.isInSession()) {
+        if (SodiumExtraInformationClientMod.SESSION_MANAGER.isInSession()) {
             if (client.isPaused()) {
-                if (!CommonMod.SESSION_MANAGER.isPaused()) {
-                    CommonMod.SESSION_MANAGER.pauseSession();
+                if (!SodiumExtraInformationClientMod.SESSION_MANAGER.isPaused()) {
+                    SodiumExtraInformationClientMod.SESSION_MANAGER.pauseSession();
                 }
             } else {
-                if (CommonMod.SESSION_MANAGER.isPaused()) {
-                    CommonMod.SESSION_MANAGER.resumeSession();
+                if (SodiumExtraInformationClientMod.SESSION_MANAGER.isPaused()) {
+                    SodiumExtraInformationClientMod.SESSION_MANAGER.resumeSession();
                 } else {
-                    CommonMod.SESSION_MANAGER.updateSessionTime();
+                    SodiumExtraInformationClientMod.SESSION_MANAGER.updateSessionTime();
                 }
             }
         }

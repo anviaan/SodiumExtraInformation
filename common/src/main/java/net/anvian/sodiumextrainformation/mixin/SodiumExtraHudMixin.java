@@ -1,7 +1,7 @@
 package net.anvian.sodiumextrainformation.mixin;
 
 import me.flashyreese.mods.sodiumextra.client.gui.SodiumExtraHud;
-import net.anvian.sodiumextrainformation.CommonMod;
+import net.anvian.sodiumextrainformation.client.SodiumExtraInformationClientMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import org.spongepowered.asm.mixin.Final;
@@ -21,23 +21,19 @@ public class SodiumExtraHudMixin {
     @Shadow
     private List<Component> textList;
 
-    @Shadow
-    @Final
-    private Minecraft client;
-
     @Inject(method = "onStartTick", at = @At("RETURN"))
     private void inject(Minecraft client, CallbackInfo ci) {
-        if (CommonMod.options().extraInformationSettings.showLocalTime) {
+        if (SodiumExtraInformationClientMod.options().extraInformationSettings.showLocalTime) {
             LocalDateTime now = LocalDateTime.now();
 
-            String timeFormat = CommonMod.options().extraInformationSettings.localTimeFormat;
+            String timeFormat = SodiumExtraInformationClientMod.options().extraInformationSettings.localTimeFormat;
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern(timeFormat);
             String formattedNow = now.format(formatter);
 
             textList.add(Component.nullToEmpty(formattedNow));
         }
 
-        if (CommonMod.options().extraInformationSettings.showWordTime) {
+        if (SodiumExtraInformationClientMod.options().extraInformationSettings.showWordTime) {
             if (client.level != null) {
                 long worldTime = client.level.getDayTime();
                 long currentDay = worldTime / 24000;
@@ -45,8 +41,8 @@ public class SodiumExtraHudMixin {
             }
         }
 
-        if (CommonMod.options().extraInformationSettings.showSessionTime) {
-            long totalTimePlayed = CommonMod.getTotalTimePlayed();
+        if (SodiumExtraInformationClientMod.options().extraInformationSettings.showSessionTime) {
+            long totalTimePlayed = SodiumExtraInformationClientMod.getTotalTimePlayed();
             int hours = (int) (totalTimePlayed / 3600);
             int minutes = (int) ((totalTimePlayed % 3600) / 60);
             int seconds = (int) (totalTimePlayed % 60);
@@ -54,7 +50,7 @@ public class SodiumExtraHudMixin {
             textList.add(Component.nullToEmpty(hours + "h " + minutes + "m " + seconds + "s"));
         }
 
-        if (CommonMod.options().extraInformationSettings.showMemoryUsage) {
+        if (SodiumExtraInformationClientMod.options().extraInformationSettings.showMemoryUsage) {
             Runtime runtime = Runtime.getRuntime();
             long usedMemory = runtime.totalMemory() - runtime.freeMemory();
             long maxMemory = runtime.maxMemory();
@@ -62,22 +58,22 @@ public class SodiumExtraHudMixin {
             int memoryUsagePercent = (int) ((double) usedMemory / maxMemory * 100);
             textList.add(Component.nullToEmpty(memoryUsagePercent + "%"));
 
-            if (CommonMod.options().extraInformationSettings.showMemoryUsageExtended) {
+            if (SodiumExtraInformationClientMod.options().extraInformationSettings.showMemoryUsageExtended) {
                 long usedMemoryMB = usedMemory / (1024 * 1024);
                 long maxMemoryMB = maxMemory / (1024 * 1024);
                 textList.add(Component.nullToEmpty(usedMemoryMB + "MB / " + maxMemoryMB + "MB"));
             }
         }
 
-        if (CommonMod.options().extraInformationSettings.showTotalEntityCount) {
+        if (SodiumExtraInformationClientMod.options().extraInformationSettings.showTotalEntityCount) {
             if (client.level != null) {
-                textList.add(Component.nullToEmpty("Total Entities: " + client.level.getEntityCount()));
+                textList.add(Component.translatable("sodium-extra-information.hud.show_total_entity_count").append(": ").append(String.valueOf(client.level.getEntityCount())));
             }
         }
 
-        if (CommonMod.options().extraInformationSettings.showsRenderedEntities) {
+        if (SodiumExtraInformationClientMod.options().extraInformationSettings.showsRenderedEntities) {
             if (client.level != null) {
-                textList.add(Component.nullToEmpty("Entities On Screen: " + client.levelRenderer.renderedEntities));
+                textList.add(Component.translatable("sodium-extra-information.hud.shows_rendered_entities").append(": ").append(String.valueOf(client.levelRenderer.renderedEntities)));
             }
         }
     }

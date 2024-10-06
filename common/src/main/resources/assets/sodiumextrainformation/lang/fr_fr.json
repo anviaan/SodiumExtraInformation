@@ -1,0 +1,19 @@
+{
+    "sodium-extra-information.options.local_time": "Heure locale",
+    "sodium-extra-information.options.local_time.tooltip": "Afficher l'heure locale sur la superposition.",
+    "sodium-extra-information.options.word_time": "Heure mondiale",
+    "sodium-extra-information.options.word_time.tooltip": "Affiche le temps passé dans le monde (jours) dans la superposition.",
+    "sodium-extra-information.hud.word_time": "Jour",
+    "sodium-extra-information.options.session_time": "Durée de la séance",
+    "sodium-extra-information.options.session_time.tooltip": "Affichez le temps que vous avez passé dans la session en cours dans la superposition.",
+    "sodium-extra-information.options.memory_usage": "Utilisation de la mémoire",
+    "sodium-extra-information.options.memory_usage.tooltip": "Afficher l'utilisation de la mémoire sur la superposition.",
+    "sodium-extra-information.options.memory_usage_extended": "Utilisation de la mémoire étendue",
+    "sodium-extra-information.options.memory_usage_extended.tooltip": "Afficher une utilisation de la mémoire plus détaillée sur la superposition.",
+    "sodium-extra-information.options.show_total_entity_count": "Afficher le nombre total d'entités",
+    "sodium-extra-information.options.show_total_entity_count.tooltip": "Affiche le nombre total d'entités dans le monde.",
+    "sodium-extra-information.hud.show_total_entity_count": "Total des entités",
+    "sodium-extra-information.options.shows_rendered_entities": "Afficher les entités rendues",
+    "sodium-extra-information.options.shows_rendered_entities.tooltip": "Affiche le nombre d’entités affichées à l’écran.",
+    "sodium-extra-information.hud.shows_rendered_entities": "Entités rendues"
+}

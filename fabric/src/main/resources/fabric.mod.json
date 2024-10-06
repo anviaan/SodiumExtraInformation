@@ -1,20 +1,25 @@
 {
   "schemaVersion": 1,
-  "id": "${mod_id}",
+  "id": "sodiumextrainformation",
   "version": "${version}",
-  "name": "${mod_name}",
-  "description": "${description}",
+  "name": "Sodium Extra Information",
+  "description": "A Sodium Extra addon that adds more in-game information.",
   "authors": [
-    "${mod_author}"
+    "anvian"
   ],
   "contact": {
     "homepage": "https://modrinth.com/mod/sodium-extra-information",
     "sources": "https://github.com/anviaan/SodiumExtraInformation",
     "issues": "https://github.com/anviaan/SodiumExtraInformation/issues"
   },
-  "license": "${license}",
-  "icon": "${mod_id}.png",
+  "license": "LGPLv3",
+  "icon": "sodiumextrainformation.png",
   "environment": "client",
+  "entrypoints": {
+    "client": [
+      "net.anvian.sodiumextrainformation.client.SodiumExtraInformationClientFabricMod"
+    ]
+  },
   "custom": {
     "modmenu": {
       "parent": {
@@ -26,23 +31,15 @@
       }
     }
   },
-  "entrypoints": {
-    "client": [
-      "net.anvian.sodiumextrainformation.FabricMod"
-    ]
-  },
+  "accessWidener": "sodiumextrainformation.accesswidener",
   "mixins": [
-    "${mod_id}.mixins.json",
-    "${mod_id}.fabric.mixins.json"
+    "sodiumextrainformation.mixins.json"
   ],
-  "accessWidener" : "${mod_id}.accesswidener",
   "depends": {
-    "fabricloader": ">=${fabric_loader_version}",
-    "fabric-api": "*",
-    "minecraft": ">=${minecraft_version}",
+    "fabricloader": ">=0.15",
     "sodium": ">=0.6.0-beta.2",
     "sodium-extra": ">=0.6.0-beta.3",
-    "java": ">=${java_version}"
+    "minecraft": ">=1.21"
   },
   "breaks": {
     "iris": "<1.7.0",
@@ -52,4 +49,3 @@
     "reeses-sodium-options": ">=1.4.2"
   }
 }
-  
