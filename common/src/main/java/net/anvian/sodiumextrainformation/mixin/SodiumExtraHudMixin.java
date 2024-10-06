@@ -21,6 +21,10 @@ public class SodiumExtraHudMixin {
     @Shadow
     private List<Component> textList;
 
+    @Shadow
+    @Final
+    private Minecraft client;
+
     @Inject(method = "onStartTick", at = @At("RETURN"))
     private void inject(Minecraft client, CallbackInfo ci) {
         if (CommonMod.options().extraInformationSettings.showLocalTime) {
@@ -37,7 +41,7 @@ public class SodiumExtraHudMixin {
             if (client.level != null) {
                 long worldTime = client.level.getDayTime();
                 long currentDay = worldTime / 24000;
-                textList.add(Component.nullToEmpty("Day: " + currentDay));
+                textList.add(Component.translatable("sodium-extra-information.hud.word_time").append(": ").append(String.valueOf(currentDay)));
             }
         }
 
@@ -62,6 +66,18 @@ public class SodiumExtraHudMixin {
                 long usedMemoryMB = usedMemory / (1024 * 1024);
                 long maxMemoryMB = maxMemory / (1024 * 1024);
                 textList.add(Component.nullToEmpty(usedMemoryMB + "MB / " + maxMemoryMB + "MB"));
+            }
+        }
+
+        if (CommonMod.options().extraInformationSettings.showTotalEntityCount) {
+            if (client.level != null) {
+                textList.add(Component.nullToEmpty("Total Entities: " + client.level.getEntityCount()));
+            }
+        }
+
+        if (CommonMod.options().extraInformationSettings.showsRenderedEntities) {
+            if (client.level != null) {
+                textList.add(Component.nullToEmpty("Entities On Screen: " + client.levelRenderer.renderedEntities));
             }
         }
     }

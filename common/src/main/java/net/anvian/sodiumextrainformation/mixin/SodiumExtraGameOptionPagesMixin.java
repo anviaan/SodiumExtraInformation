@@ -58,6 +58,18 @@ public class SodiumExtraGameOptionPagesMixin {
                         .setControl(TickBoxControl::new)
                         .setBinding((opts, value) -> opts.extraInformationSettings.showMemoryUsageExtended = value, opts -> opts.extraInformationSettings.showMemoryUsageExtended)
                         .build())
+                .add(OptionImpl.createBuilder(Boolean.TYPE, sodiumExtraInformation$sodiumExtraOpts)
+                        .setName(Component.literal("Show Entity Count"))
+                        .setTooltip(Component.literal("Show the total entity count on the world"))
+                        .setControl(TickBoxControl::new)
+                        .setBinding((opts, value) -> opts.extraInformationSettings.showTotalEntityCount = value, opts -> opts.extraInformationSettings.showTotalEntityCount)
+                        .build())
+                .add(OptionImpl.createBuilder(Boolean.TYPE, sodiumExtraInformation$sodiumExtraOpts)
+                        .setName(Component.literal("Show Rendered Entities"))
+                        .setTooltip(Component.literal("Show the count of entities rendered on screen"))
+                        .setControl(TickBoxControl::new)
+                        .setBinding((opts, value) -> opts.extraInformationSettings.showsRenderedEntities = value, opts -> opts.extraInformationSettings.showsRenderedEntities)
+                        .build())
                 .build());
 
         cir.setReturnValue(new OptionPage(Component.translatable("sodium-extra.option.extras"), ImmutableList.copyOf(groups)));

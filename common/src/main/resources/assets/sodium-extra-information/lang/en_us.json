@@ -4,6 +4,7 @@
 
   "sodium-extra-information.options.word_time": "World Time",
   "sodium-extra-information.options.word_time.tooltip": "Displays the time spent in the world(days) in the overlay.",
+  "sodium-extra-information.hud.word_time": "Day",
 
   "sodium-extra-information.options.session_time": "Session time",
   "sodium-extra-information.options.session_time.tooltip": "Show the time you have been in the current session in the overlay.",

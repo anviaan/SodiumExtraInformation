@@ -67,6 +67,8 @@ public class SodiumExtraInformationGameOptions {
         public boolean showSessionTime;
         public boolean showMemoryUsage;
         public boolean showMemoryUsageExtended;
+        public boolean showTotalEntityCount;
+        public boolean showsRenderedEntities;
 
         public ExtraInformationSettings() {
             this.showLocalTime = false;
@@ -75,6 +77,8 @@ public class SodiumExtraInformationGameOptions {
             this.showSessionTime = false;
             this.showMemoryUsage = false;
             this.showMemoryUsageExtended = false;
+            this.showTotalEntityCount = false;
+            this.showsRenderedEntities = false;
         }
 
         private boolean validateTimeFormat(String format) {

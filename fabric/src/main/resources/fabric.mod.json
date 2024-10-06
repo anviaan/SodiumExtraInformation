@@ -35,12 +35,13 @@
     "${mod_id}.mixins.json",
     "${mod_id}.fabric.mixins.json"
   ],
+  "accessWidener" : "${mod_id}.accesswidener",
   "depends": {
     "fabricloader": ">=${fabric_loader_version}",
     "fabric-api": "*",
     "minecraft": ">=${minecraft_version}",
-    "sodium": ">=0.6.0-beta.1",
-    "sodium-extra": ">=0.6.0-beta.1",
+    "sodium": ">=0.6.0-beta.2",
+    "sodium-extra": ">=0.6.0-beta.3",
     "java": ">=${java_version}"
   },
   "breaks": {
