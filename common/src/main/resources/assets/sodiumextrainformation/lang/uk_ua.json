@@ -15,5 +15,7 @@
     "sodium-extra-information.hud.show_total_entity_count": "Всього сутностей",
     "sodium-extra-information.options.shows_rendered_entities": "Показати відтворені сутності",
     "sodium-extra-information.options.shows_rendered_entities.tooltip": "Показати кількість сутностей, які відображаються на екрані.",
-    "sodium-extra-information.hud.shows_rendered_entities": "Відтворені сутності"
+    "sodium-extra-information.hud.shows_rendered_entities": "Відтворені сутності",
+    "sodium-extra-information.options.show_biome": "Показати біом",
+    "sodium-extra-information.options.show_biome.tooltip": "Покажіть біом, у якому ви перебуваєте."
 }

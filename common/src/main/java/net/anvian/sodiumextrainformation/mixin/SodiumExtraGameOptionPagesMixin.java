@@ -70,6 +70,12 @@ public class SodiumExtraGameOptionPagesMixin {
                         .setControl(TickBoxControl::new)
                         .setBinding((opts, value) -> opts.extraInformationSettings.showsRenderedEntities = value, opts -> opts.extraInformationSettings.showsRenderedEntities)
                         .build())
+                .add(OptionImpl.createBuilder(Boolean.TYPE, sodiumExtraInformation$sodiumExtraOpts)
+                        .setName(Component.translatable("sodium-extra-information.options.show_biome"))
+                        .setTooltip(Component.translatable("sodium-extra-information.options.show_biome.tooltip"))
+                        .setControl(TickBoxControl::new)
+                        .setBinding((opts, value) -> opts.extraInformationSettings.showBiome = value, opts -> opts.extraInformationSettings.showBiome)
+                        .build())
                 .build());
 
         cir.setReturnValue(new OptionPage(Component.translatable("sodium-extra.option.extras"), ImmutableList.copyOf(groups)));

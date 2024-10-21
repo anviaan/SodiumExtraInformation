@@ -15,5 +15,7 @@
     "sodium-extra-information.hud.show_total_entity_count": "총 엔터티",
     "sodium-extra-information.options.shows_rendered_entities": "렌더링된 엔티티 표시",
     "sodium-extra-information.options.shows_rendered_entities.tooltip": "화면에 렌더링되는 엔터티의 수를 표시합니다.",
-    "sodium-extra-information.hud.shows_rendered_entities": "렌더링된 엔티티"
+    "sodium-extra-information.hud.shows_rendered_entities": "렌더링된 엔티티",
+    "sodium-extra-information.options.show_biome": "바이옴 표시",
+    "sodium-extra-information.options.show_biome.tooltip": "당신이 있는 생물군계를 보여주세요."
 }

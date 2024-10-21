@@ -15,5 +15,7 @@
     "sodium-extra-information.hud.show_total_entity_count": "エンティティ合計",
     "sodium-extra-information.options.shows_rendered_entities": "レンダリングされたエンティティを表示",
     "sodium-extra-information.options.shows_rendered_entities.tooltip": "画面上にレンダリングされるエンティティの数を表示します。",
-    "sodium-extra-information.hud.shows_rendered_entities": "レンダリングされたエンティティ"
+    "sodium-extra-information.hud.shows_rendered_entities": "レンダリングされたエンティティ",
+    "sodium-extra-information.options.show_biome": "バイオームを表示",
+    "sodium-extra-information.options.show_biome.tooltip": "あなたがいるバイオームを表示します。"
 }

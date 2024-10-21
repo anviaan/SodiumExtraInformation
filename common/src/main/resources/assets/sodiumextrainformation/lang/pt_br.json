@@ -15,5 +15,7 @@
     "sodium-extra-information.hud.show_total_entity_count": "Total de Entidades",
     "sodium-extra-information.options.shows_rendered_entities": "Mostrar entidades renderizadas",
     "sodium-extra-information.options.shows_rendered_entities.tooltip": "Mostra o número de entidades que são renderizadas na tela.",
-    "sodium-extra-information.hud.shows_rendered_entities": "Entidades renderizadas"
+    "sodium-extra-information.hud.shows_rendered_entities": "Entidades renderizadas",
+    "sodium-extra-information.options.show_biome": "Mostrar Bioma",
+    "sodium-extra-information.options.show_biome.tooltip": "Mostre o bioma em que você está."
 }

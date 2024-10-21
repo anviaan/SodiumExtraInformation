@@ -15,5 +15,7 @@
     "sodium-extra-information.hud.show_total_entity_count": "Einheiten insgesamt",
     "sodium-extra-information.options.shows_rendered_entities": "Gerenderte Objekte anzeigen",
     "sodium-extra-information.options.shows_rendered_entities.tooltip": "Zeigt die Anzahl der Entitäten an, die auf dem Bildschirm gerendert werden.",
-    "sodium-extra-information.hud.shows_rendered_entities": "Gerenderte Objekte"
+    "sodium-extra-information.hud.shows_rendered_entities": "Gerenderte Objekte",
+    "sodium-extra-information.options.show_biome": "Biom anzeigen",
+    "sodium-extra-information.options.show_biome.tooltip": "Zeigen Sie das Biom an, in dem Sie sich befinden."
 }

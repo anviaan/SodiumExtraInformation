@@ -15,5 +15,7 @@
     "sodium-extra-information.hud.show_total_entity_count": "实体总数",
     "sodium-extra-information.options.shows_rendered_entities": "显示渲染实体",
     "sodium-extra-information.options.shows_rendered_entities.tooltip": "显示在屏幕上呈现的实体数量。",
-    "sodium-extra-information.hud.shows_rendered_entities": "渲染实体"
+    "sodium-extra-information.hud.shows_rendered_entities": "渲染实体",
+    "sodium-extra-information.options.show_biome": "显示生物群系",
+    "sodium-extra-information.options.show_biome.tooltip": "显示您所在的生物群系。"
 }

@@ -16,10 +16,13 @@
   "sodium-extra-information.options.memory_usage_extended.tooltip": "Show a more detailed memory usage on the overlay.",
 
   "sodium-extra-information.options.show_total_entity_count": "Show total entity count",
-  "sodium-extra-information.options.show_total_entity_count.tooltip":"Show the total entity count on the world.",
+  "sodium-extra-information.options.show_total_entity_count.tooltip": "Show the total entity count on the world.",
   "sodium-extra-information.hud.show_total_entity_count": "Total Entities",
 
   "sodium-extra-information.options.shows_rendered_entities": "Show Rendered Entities",
-  "sodium-extra-information.options.shows_rendered_entities.tooltip":"Show the number of entities that are rendered on the screen.",
-  "sodium-extra-information.hud.shows_rendered_entities": "Rendered Entities"
+  "sodium-extra-information.options.shows_rendered_entities.tooltip": "Show the number of entities that are rendered on the screen.",
+  "sodium-extra-information.hud.shows_rendered_entities": "Rendered Entities",
+
+  "sodium-extra-information.options.show_biome": "Show Biome",
+  "sodium-extra-information.options.show_biome.tooltip": "Show the biome you are in."
 }

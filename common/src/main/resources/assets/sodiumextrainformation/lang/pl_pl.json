@@ -15,5 +15,7 @@
     "sodium-extra-information.hud.show_total_entity_count": "Łączna liczba podmiotów",
     "sodium-extra-information.options.shows_rendered_entities": "Pokaż renderowane jednostki",
     "sodium-extra-information.options.shows_rendered_entities.tooltip": "Pokaż liczbę jednostek renderowanych na ekranie.",
-    "sodium-extra-information.hud.shows_rendered_entities": "Wyrenderowane jednostki"
+    "sodium-extra-information.hud.shows_rendered_entities": "Wyrenderowane jednostki",
+    "sodium-extra-information.options.show_biome": "Pokaż biom",
+    "sodium-extra-information.options.show_biome.tooltip": "Pokaż biom, w którym się znajdujesz."
 }

@@ -3,7 +3,12 @@ package net.anvian.sodiumextrainformation.mixin;
 import me.flashyreese.mods.sodiumextra.client.gui.SodiumExtraHud;
 import net.anvian.sodiumextrainformation.client.SodiumExtraInformationClientMod;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.level.biome.Biome;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -74,6 +79,20 @@ public class SodiumExtraHudMixin {
         if (SodiumExtraInformationClientMod.options().extraInformationSettings.showsRenderedEntities) {
             if (client.level != null) {
                 textList.add(Component.translatable("sodium-extra-information.hud.shows_rendered_entities").append(": ").append(String.valueOf(client.levelRenderer.renderedEntities)));
+            }
+        }
+
+        if (SodiumExtraInformationClientMod.options().extraInformationSettings.showBiome) {
+            if (client.level != null && client.player != null) {
+                ClientLevel level = client.level;
+                BlockPos playerPos = client.player.blockPosition();
+                Biome biome = level.getBiome(playerPos).value();
+                String biomeName = level.registryAccess().registryOrThrow(Registries.BIOME).getKey(biome).toString();
+                MutableComponent txt = biomeName.startsWith("minecraft:")
+                        ? Component.translatable("biome.minecraft." + biomeName.substring("minecraft:".length()))
+                        : Component.literal(biomeName);
+
+                textList.add(txt);
             }
         }
     }

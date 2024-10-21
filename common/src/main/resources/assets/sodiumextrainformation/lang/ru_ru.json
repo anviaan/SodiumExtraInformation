@@ -14,6 +14,8 @@
     "sodium-extra-information.options.show_total_entity_count.tooltip": "Показать общее количество сущностей в мире.",
     "sodium-extra-information.hud.show_total_entity_count": "Всего сущностей",
     "sodium-extra-information.options.shows_rendered_entities": "Показать визуализированные сущности",
-    "sodium-extra-information.options.shows_rendered_entities.tooltip": "Показывать количество сущностей, отображаемых на экране.",
-    "sodium-extra-information.hud.shows_rendered_entities": "Визуализированные сущности"
+    "sodium-extra-information.options.shows_rendered_entities.tooltip": "Показывать количество объектов, отображаемых на экране.",
+    "sodium-extra-information.hud.shows_rendered_entities": "Визуализированные сущности",
+    "sodium-extra-information.options.show_biome": "Показать биом",
+    "sodium-extra-information.options.show_biome.tooltip": "Покажите биом, в котором вы находитесь."
 }

@@ -13,7 +13,9 @@
     "sodium-extra-information.options.show_total_entity_count": "顯示實體總數",
     "sodium-extra-information.options.show_total_entity_count.tooltip": "顯示世界上的實體總數。",
     "sodium-extra-information.hud.show_total_entity_count": "實體總數",
-    "sodium-extra-information.options.shows_rendered_entities": "顯示渲染實體",
+    "sodium-extra-information.options.shows_rendered_entities": "顯示渲染的實體",
     "sodium-extra-information.options.shows_rendered_entities.tooltip": "顯示螢幕上呈現的實體數量。",
-    "sodium-extra-information.hud.shows_rendered_entities": "渲染實體"
+    "sodium-extra-information.hud.shows_rendered_entities": "渲染實體",
+    "sodium-extra-information.options.show_biome": "顯示生物群系",
+    "sodium-extra-information.options.show_biome.tooltip": "顯示您所在的生物群系。"
 }
