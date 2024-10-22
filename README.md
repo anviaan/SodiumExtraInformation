@@ -9,6 +9,7 @@ Sodium Extra Information is a mod for Minecraft that adds extra information to t
 - Show Memory Usage Extended
 - Show Entity Count
 - Show Rendered Entity Count
+- Show Biome
 
 ![Feature example](https://cdn.modrinth.com/data/696WgnvT/images/ac1bc3b8e7d13887b787c9bd1a23438d6bb3c25d.png)
 
