@@ -1,21 +1,28 @@
 {
-    "sodium-extra-information.options.local_time": "當地時間",
-    "sodium-extra-information.options.local_time.tooltip": "在疊加層上顯示當地時間。",
-    "sodium-extra-information.options.word_time": "世界時間",
-    "sodium-extra-information.options.word_time.tooltip": "在疊加層中顯示在世界上花費的時間（天）。",
-    "sodium-extra-information.hud.word_time": "天",
-    "sodium-extra-information.options.session_time": "會議時間",
-    "sodium-extra-information.options.session_time.tooltip": "在疊加層中顯示您在目前會話中的時間。",
-    "sodium-extra-information.options.memory_usage": "記憶體使用情況",
-    "sodium-extra-information.options.memory_usage.tooltip": "在覆蓋層上顯示記憶體使用量。",
-    "sodium-extra-information.options.memory_usage_extended": "記憶體使用擴展",
-    "sodium-extra-information.options.memory_usage_extended.tooltip": "在覆蓋層上顯示更詳細的記憶體使用情況。",
-    "sodium-extra-information.options.show_total_entity_count": "顯示實體總數",
-    "sodium-extra-information.options.show_total_entity_count.tooltip": "顯示世界上的實體總數。",
-    "sodium-extra-information.hud.show_total_entity_count": "實體總數",
-    "sodium-extra-information.options.shows_rendered_entities": "顯示渲染的實體",
-    "sodium-extra-information.options.shows_rendered_entities.tooltip": "顯示螢幕上呈現的實體數量。",
-    "sodium-extra-information.hud.shows_rendered_entities": "渲染實體",
-    "sodium-extra-information.options.show_biome": "顯示生物群系",
-    "sodium-extra-information.options.show_biome.tooltip": "顯示您所在的生物群系。"
+  "sodium-extra-information.options.local_time": "當地時間",
+  "sodium-extra-information.options.local_time.tooltip": "在疊加層上顯示當地時間。",
+  
+  "sodium-extra-information.options.word_time": "世界時間",
+  "sodium-extra-information.options.word_time.tooltip": "在疊加層上顯示在世界中花費的時間（天數）。",
+  "sodium-extra-information.hud.word_time": "天",
+  
+  "sodium-extra-information.options.session_time": "遊玩時間",
+  "sodium-extra-information.options.session_time.tooltip": "在疊加層上顯示您在目前遊玩階段的時間。",
+  
+  "sodium-extra-information.options.memory_usage": "記憶體用量",
+  "sodium-extra-information.options.memory_usage.tooltip": "在疊加層上顯示記憶體用量。",
+  
+  "sodium-extra-information.options.memory_usage_extended": "延伸記憶體用量",
+  "sodium-extra-information.options.memory_usage_extended.tooltip": "在疊加層上顯示更詳細的記憶體用量。",
+  
+  "sodium-extra-information.options.show_total_entity_count": "顯示實體總數",
+  "sodium-extra-information.options.show_total_entity_count.tooltip": "顯示世界上實體的總數。",
+  "sodium-extra-information.hud.show_total_entity_count": "實體總數",
+  
+  "sodium-extra-information.options.shows_rendered_entities": "顯示已繪製實體",
+  "sodium-extra-information.options.shows_rendered_entities.tooltip": "顯示畫面上已繪製的實體數量。",
+  "sodium-extra-information.hud.shows_rendered_entities": "已繪製實體",
+  
+  "sodium-extra-information.options.show_biome": "顯示生態域",
+  "sodium-extra-information.options.show_biome.tooltip": "顯示您所在的生態域。"
 }
