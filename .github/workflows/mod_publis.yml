@@ -47,7 +47,7 @@ jobs:
 
           name: ${{ env.RELEASE_NAME }}
           version: ${{ env.MOD_VERSION }}
-          version-type: 'beta'
+          version-type: release
           changelog-file: CHANGELOG.md
 
           game-versions: ${{ env.GAME_VERSIONS }}
@@ -77,7 +77,7 @@ jobs:
 
           name: ${{ env.RELEASE_NAME }}
           version: ${{ env.MOD_VERSION }}
-          version-type: 'beta'
+          version-type: release
           changelog-file: CHANGELOG.md
 
           game-versions: ${{ env.GAME_VERSIONS }}
