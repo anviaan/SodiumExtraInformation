@@ -19,7 +19,7 @@ val SODIUM_VERSION by extra { "mc1.21.1-0.6.0" }
 val SODIUM_EXTRA_VERSION by extra { "mc1.21.1-0.6.0" }
 val MODMENU_VERSION by extra { "11.0.3" }
 
-val COMPATIBLE_VERSIONS by extra { "[1.21, 1.21.1)" }
+val COMPATIBLE_VERSIONS by extra { "[1.21, 1.21.2)" }
 
 allprojects {
     apply(plugin = "java")
