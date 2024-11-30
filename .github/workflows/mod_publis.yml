@@ -47,7 +47,7 @@ jobs:
 
           name: ${{ env.RELEASE_NAME }}
           version: ${{ env.MOD_VERSION }}
-          version-type: 'release'
+          version-type: release
           changelog-file: CHANGELOG.md
 
           game-versions: ${{ env.GAME_VERSIONS }}
@@ -76,8 +76,8 @@ jobs:
             neoforge/build/libs/*.jar
 
           name: ${{ env.RELEASE_NAME }}
-          version: ${{ release.MOD_VERSION }}
-          version-type: 'release'
+          version: ${{ env.MOD_VERSION }}
+          version-type: release
           changelog-file: CHANGELOG.md
 
           game-versions: ${{ env.GAME_VERSIONS }}
