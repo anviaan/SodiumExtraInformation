@@ -1,0 +1,64 @@
+name: NeoForgePublish
+
+on: [ workflow_dispatch ]
+
+env:
+  JAVA_VERSION: 21
+  MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+  CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Environment Variables
+        run: env
+
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Make Gradle Wrapper Executable
+        run: chmod +x gradlew
+
+      - name: Set Environment Variables from Gradle
+        run: ./gradlew printEnv
+
+      - name: Build
+        run: ./gradlew neoforge:build
+
+      - name: Publish (Modrinth & CurseForge)
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: 696WgnvT
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+
+          curseforge-id: 1073022
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+
+          files: |
+            neoforge/build/libs/*.jar
+
+          name: ${{ env.RELEASE_NAME }}
+          version: ${{ env.MOD_VERSION }}
+          version-type: 'release'
+          changelog-file: CHANGELOG.md
+
+          game-versions: ${{ env.GAME_VERSIONS }}
+
+          loaders: |
+            neoforge
+
+          dependencies: |
+            sodium
+            sodium-extra
+
+          java: ${{ env.JAVA_VERSION }}
