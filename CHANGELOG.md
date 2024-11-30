@@ -1,1 +1,2 @@
-- Port to 1.21.2 and 1.21.3
+- Update zh_tw.json by @yichifauz
+- Updating Sodium and Sodium Extra version
