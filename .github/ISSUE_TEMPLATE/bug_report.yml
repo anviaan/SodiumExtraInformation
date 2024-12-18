@@ -19,7 +19,7 @@ body:
       label: Loader
       multiple: false
       options:
-        - forge
+        - neoforge
         - fabric
     validations:
       required: true

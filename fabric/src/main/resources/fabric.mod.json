@@ -37,8 +37,8 @@
   ],
   "depends": {
     "fabricloader": ">=0.16",
-    "sodium": ">=0.6.0",
-    "sodium-extra": ">=0.6.0",
+    "sodium": ">=0.6.0-beta.2",
+    "sodium-extra": ">=0.6.0-beta.3",
     "minecraft": ">=1.21"
   },
   "breaks": {

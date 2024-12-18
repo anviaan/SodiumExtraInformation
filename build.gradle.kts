@@ -14,9 +14,9 @@ val PARCHMENT_VERSION by extra { null }
 // https://semver.org/
 val MAVEN_GROUP by extra { "net.anvian.sodiumextrainformation" }
 val ARCHIVE_NAME by extra { "SodiumExtraInformation" }
-val MOD_VERSION by extra { "2.3" }
-val SODIUM_VERSION by extra { "mc1.21.1-0.6.0" }
-val SODIUM_EXTRA_VERSION by extra { "mc1.21.1-0.6.0" }
+val MOD_VERSION by extra { "2.3.1" }
+val SODIUM_VERSION by extra { "mc1.21-0.6.0-beta.2" }
+val SODIUM_EXTRA_VERSION by extra { "mc1.21.1-0.6.0-beta.3" }
 val MODMENU_VERSION by extra { "11.0.3" }
 
 val COMPATIBLE_VERSIONS by extra { "[1.21, 1.21.2)" }

@@ -1,2 +1,1 @@
-- Updating sodium and sodium extra dependencies
-- Update zh_tw.json by @yichifauz
+- Fixing version 1.21
