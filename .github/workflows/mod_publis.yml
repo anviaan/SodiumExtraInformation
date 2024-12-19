@@ -1,13 +1,6 @@
-name: Fabric and NeoForge Publish
+name: Mod Publish
 
 on: [ workflow_dispatch ]
-
-env:
-  JAVA_VERSION: 21
-  MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
-  CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
-  MODRINTH_ID: 696WgnvT
-  CURSEFORGE_ID: 1073022
 
 jobs:
   publish:
@@ -34,17 +27,20 @@ jobs:
       - name: Set Environment Variables from Gradle
         run: ./gradlew printEnv
 
-      - name: Build
-        run: ./gradlew build
+      - name: Build Fabric
+        run: ./gradlew fabric:build
 
-      - name: Fabric Publish (Modrinth & CurseForge)
+      - name: Build NeoForge
+        run: ./gradlew neoforge:build
+
+      - name: Publish Fabric (Modrinth & CurseForge)
         uses: Kir-Antipov/mc-publish@v3.3
         with:
-          modrinth-id: ${{ env.MODRINTH_ID }}
-          modrinth-token: ${{ env.MODRINTH_TOKEN }}
+          modrinth-id: 696WgnvT
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
 
-          curseforge-id: ${{ env.CURSEFORGE_ID }}
-          curseforge-token: ${{ env.CURSEFORGE_TOKEN }}
+          curseforge-id: 1073022
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
 
           files: |
             fabric/build/libs/*.jar
@@ -67,21 +63,21 @@ jobs:
 
           java: ${{ env.JAVA_VERSION }}
 
-      - name: NeoForge Publish (Modrinth & CurseForge)
+      - name: Publish Neoforge (Modrinth & CurseForge)
         uses: Kir-Antipov/mc-publish@v3.3
         with:
-          modrinth-id: ${{ env.MODRINTH_ID }}
-          modrinth-token: ${{ env.MODRINTH_TOKEN }}
+          modrinth-id: 696WgnvT
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
 
-          curseforge-id: ${{ env.CURSEFORGE_ID }}
-          curseforge-token: ${{ env.CURSEFORGE_TOKEN }}
+          curseforge-id: 1073022
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
 
           files: |
             neoforge/build/libs/*.jar
 
           name: ${{ env.RELEASE_NAME }}
           version: ${{ env.MOD_VERSION }}
-          version-type: 'release'
+          version-type: release
           changelog-file: CHANGELOG.md
 
           game-versions: ${{ env.GAME_VERSIONS }}

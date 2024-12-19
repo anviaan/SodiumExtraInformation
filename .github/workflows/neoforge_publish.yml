@@ -6,8 +6,6 @@ env:
   JAVA_VERSION: 21
   MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
   CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
-  MODRINTH_ID: 696WgnvT
-  CURSEFORGE_ID: 1073022
 
 jobs:
   publish:
@@ -40,14 +38,14 @@ jobs:
       - name: Publish (Modrinth & CurseForge)
         uses: Kir-Antipov/mc-publish@v3.3
         with:
-          modrinth-id: ${{ env.MODRINTH_ID }}
-          modrinth-token: ${{ env.MODRINTH_TOKEN }}
+          modrinth-id: 696WgnvT
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
 
-          curseforge-id: ${{ env.CURSEFORGE_ID }}
-          curseforge-token: ${{ env.CURSEFORGE_TOKEN }}
+          curseforge-id: 1073022
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
 
           files: |
-            fabric/build/libs/*.jar
+            neoforge/build/libs/*.jar
 
           name: ${{ env.RELEASE_NAME }}
           version: ${{ env.MOD_VERSION }}
