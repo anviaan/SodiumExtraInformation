@@ -1,2 +1,1 @@
-- Update zh_tw.json by @yichifauz
-- Updating Sodium and Sodium Extra version
+- Updating dependencies to work in new versions
