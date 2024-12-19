@@ -47,7 +47,7 @@ jobs:
           curseforge-token: ${{ env.CURSEFORGE_TOKEN }}
 
           files: |
-            neoforge/build/libs/!(*-@(dev|sources|javadoc)).jar
+            fabric/build/libs/*.jar
 
           name: ${{ env.RELEASE_NAME }}
           version: ${{ env.MOD_VERSION }}
