@@ -1,6 +1,6 @@
 name: NeoForgePublish
 
-on: [workflow_dispatch]
+on: [ workflow_dispatch ]
 
 env:
   JAVA_VERSION: 21
@@ -47,7 +47,7 @@ jobs:
           curseforge-token: ${{ env.CURSEFORGE_TOKEN }}
 
           files: |
-            neoforge/build/libs/!(*-@(dev|sources|javadoc)).jar
+            neoforge/build/libs/!(*-@(dev|sources|javadoc|shadow)).jar
 
           name: ${{ env.RELEASE_NAME }}
           version: ${{ env.MOD_VERSION }}
