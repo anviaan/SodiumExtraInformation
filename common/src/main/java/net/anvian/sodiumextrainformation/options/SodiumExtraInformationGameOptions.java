@@ -21,7 +21,7 @@ public class SodiumExtraInformationGameOptions {
     private Path configPath;
 
     public static SodiumExtraInformationGameOptions load() {
-        Path path = PlatformRuntimeInformation.getInstance().getConfigDirectory().resolve(DEFAULT_FILE_NAME);
+        Path path = PlatformRuntimeInformation.getInstance().getConfigDirectory().resolve(SodiumExtraInformationClientMod.MOD_ID).resolve(DEFAULT_FILE_NAME);
         SodiumExtraInformationGameOptions config;
 
         if (Files.exists(path)) {

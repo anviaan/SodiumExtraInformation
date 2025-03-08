@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 public class SodiumExtraInformationClientMod {
     public static final String MOD_ID = "sodiumextrainformation";
+    public static final String MOD_VERSION = "2.5";
     private static final String MOD_NAME = "Sodium Extra Information";
     private static Logger LOGGER;
 

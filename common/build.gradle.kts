@@ -14,6 +14,8 @@ val FABRIC_API_VERSION: String by rootProject.extra
 val SODIUM_VERSION: String by rootProject.extra
 val SODIUM_EXTRA_VERSION: String by rootProject.extra
 
+val ANVIANS_LIB: String by rootProject.extra
+
 // This trick hides common tasks in the IDEA list.
 tasks.configureEach {
     group = null
@@ -43,6 +45,8 @@ dependencies {
 
     modImplementation("maven.modrinth:sodium:$SODIUM_VERSION-fabric")
     modImplementation("maven.modrinth:sodium-extra:$SODIUM_EXTRA_VERSION+fabric")
+
+    modImplementation("net.anvian.anvianslib:anvianslib-common-1.21:$ANVIANS_LIB")
 }
 
 tasks.withType<AbstractRemapJarTask>().forEach {
@@ -55,16 +59,4 @@ loom {
     }
 
     accessWidenerPath = file("src/main/resources/${rootProject.name}.accesswidener")
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("mavenJava") {
-            artifactId = base.archivesName.get()
-            from(components["java"])
-        }
-    }
-
-    repositories {
-    }
 }

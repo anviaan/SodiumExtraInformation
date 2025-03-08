@@ -15,6 +15,8 @@ val SODIUM_EXTRA_VERSION: String by rootProject.extra
 val MODMENU_VERSION: String by rootProject.extra
 val ARCHIVE_NAME: String by rootProject.extra
 
+val ANVIANS_LIB: String by rootProject.extra
+
 base {
     archivesName.set("$ARCHIVE_NAME-fabric")
 }
@@ -38,6 +40,8 @@ dependencies {
     modImplementation("maven.modrinth:sodium:$SODIUM_VERSION-fabric")
     modImplementation("maven.modrinth:sodium-extra:$SODIUM_EXTRA_VERSION+fabric")
     modLocalRuntime("com.terraformersmc:modmenu:$MODMENU_VERSION")
+
+    modImplementation("net.anvian.anvianslib:anvianslib-fabric-1.21:$ANVIANS_LIB")
 }
 
 loom {
@@ -81,17 +85,5 @@ tasks {
 
     jar {
         from(rootDir.resolve("LICENSE.txt"))
-    }
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("mavenJava") {
-            artifactId = base.archivesName.get()
-            from(components["java"])
-        }
-    }
-
-    repositories {
     }
 }
