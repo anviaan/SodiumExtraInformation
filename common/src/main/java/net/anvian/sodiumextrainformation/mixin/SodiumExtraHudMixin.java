@@ -2,6 +2,7 @@ package net.anvian.sodiumextrainformation.mixin;
 
 import me.flashyreese.mods.sodiumextra.client.gui.SodiumExtraHud;
 import net.anvian.sodiumextrainformation.client.SodiumExtraInformationClientMod;
+import net.anvian.sodiumextrainformation.options.SodiumExtraInformationGameOptions;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
@@ -12,6 +13,7 @@ import net.minecraft.world.level.biome.Biome;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -28,72 +30,119 @@ public class SodiumExtraHudMixin {
 
     @Inject(method = "onStartTick", at = @At("RETURN"))
     private void inject(Minecraft client, CallbackInfo ci) {
-        if (SodiumExtraInformationClientMod.options().extraInformationSettings.showLocalTime) {
-            LocalDateTime now = LocalDateTime.now();
+        SodiumExtraInformationGameOptions options = SodiumExtraInformationClientMod.options();
 
-            String timeFormat = SodiumExtraInformationClientMod.options().extraInformationSettings.localTimeFormat;
+        sodiumextrainformation$displayLocalTime(options);
+        sodiumextrainformation$displayWorldTime(client, options);
+        sodiumextrainformation$displaySessionTime(options);
+        sodiumextrainformation$displayMemoryUsage(options);
+        sodiumextrainformation$displayTotalEntityCount(client, options);
+        sodiumextrainformation$displayRenderedEntities(client, options);
+        sodiumextrainformation$displayBiome(client, options);
+    }
+
+    @Unique
+    private void sodiumextrainformation$displayLocalTime(SodiumExtraInformationGameOptions options) {
+        if (options.extraInformationSettings.localTimeConfig.showLocalTime) {
+            LocalDateTime now = LocalDateTime.now();
+            String timeFormat = options.extraInformationSettings.localTimeConfig.localTimeFormat;
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern(timeFormat);
             String formattedNow = now.format(formatter);
 
-            textList.add(Component.nullToEmpty(formattedNow));
+            textList.add(Component.literal(formattedNow)
+                    .withColor(options.extraInformationSettings.localTimeConfig.color.rgbToDecimal()));
+        }
+    }
+
+    @Unique
+    private void sodiumextrainformation$displayWorldTime(Minecraft client, SodiumExtraInformationGameOptions options) {
+        if (!options.extraInformationSettings.wordTimeConfig.showWordTime || client.level == null) {
+            return;
         }
 
-        if (SodiumExtraInformationClientMod.options().extraInformationSettings.showWordTime) {
-            if (client.level != null) {
-                long worldTime = client.level.getDayTime();
-                long currentDay = worldTime / 24000;
-                textList.add(Component.translatable("sodium-extra-information.hud.word_time").append(": ").append(String.valueOf(currentDay)));
-            }
-        }
+        long worldTime = client.level.getDayTime();
+        long currentDay = worldTime / 24000;
+        textList.add(Component.translatable("sodium-extra-information.hud.word_time")
+                .append(": ")
+                .append(String.valueOf(currentDay))
+                .withColor(options.extraInformationSettings.wordTimeConfig.color.rgbToDecimal()));
+    }
 
-        if (SodiumExtraInformationClientMod.options().extraInformationSettings.showSessionTime) {
+    @Unique
+    private void sodiumextrainformation$displaySessionTime(SodiumExtraInformationGameOptions options) {
+        if (options.extraInformationSettings.sessionTimeConfig.showSessionTime) {
             long totalTimePlayed = SodiumExtraInformationClientMod.getTotalTimePlayed();
             int hours = (int) (totalTimePlayed / 3600);
             int minutes = (int) ((totalTimePlayed % 3600) / 60);
             int seconds = (int) (totalTimePlayed % 60);
 
-            textList.add(Component.nullToEmpty(hours + "h " + minutes + "m " + seconds + "s"));
+            textList.add(Component.literal(hours + "h " + minutes + "m " + seconds + "s")
+                    .withColor(options.extraInformationSettings.sessionTimeConfig.color.rgbToDecimal()));
+        }
+    }
+
+    @Unique
+    private void sodiumextrainformation$displayMemoryUsage(SodiumExtraInformationGameOptions options) {
+        if (!options.extraInformationSettings.memoryUsageConfig.showMemoryUsage) {
+            return;
         }
 
-        if (SodiumExtraInformationClientMod.options().extraInformationSettings.showMemoryUsage) {
-            Runtime runtime = Runtime.getRuntime();
-            long usedMemory = runtime.totalMemory() - runtime.freeMemory();
-            long maxMemory = runtime.maxMemory();
+        Runtime runtime = Runtime.getRuntime();
+        long usedMemory = runtime.totalMemory() - runtime.freeMemory();
+        long maxMemory = runtime.maxMemory();
+        int color = options.extraInformationSettings.memoryUsageConfig.color.rgbToDecimal();
 
-            int memoryUsagePercent = (int) ((double) usedMemory / maxMemory * 100);
-            textList.add(Component.nullToEmpty(memoryUsagePercent + "%"));
+        int memoryUsagePercent = (int) ((double) usedMemory / maxMemory * 100);
+        textList.add(Component.literal(memoryUsagePercent + "%").withColor(color));
 
-            if (SodiumExtraInformationClientMod.options().extraInformationSettings.showMemoryUsageExtended) {
-                long usedMemoryMB = usedMemory / (1024 * 1024);
-                long maxMemoryMB = maxMemory / (1024 * 1024);
-                textList.add(Component.nullToEmpty(usedMemoryMB + "MB / " + maxMemoryMB + "MB"));
-            }
+        if (options.extraInformationSettings.memoryUsageConfig.showMemoryUsageExtended) {
+            long usedMemoryMB = usedMemory / (1024 * 1024);
+            long maxMemoryMB = maxMemory / (1024 * 1024);
+            textList.add(Component.literal(usedMemoryMB + "MB / " + maxMemoryMB + "MB").withColor(color));
+        }
+    }
+
+    @Unique
+    private void sodiumextrainformation$displayTotalEntityCount(Minecraft client, SodiumExtraInformationGameOptions options) {
+        if (!options.extraInformationSettings.totalEntityCountConfig.showTotalEntityCount || client.level == null) {
+            return;
         }
 
-        if (SodiumExtraInformationClientMod.options().extraInformationSettings.showTotalEntityCount) {
-            if (client.level != null) {
-                textList.add(Component.translatable("sodium-extra-information.hud.show_total_entity_count").append(": ").append(String.valueOf(client.level.getEntityCount())));
-            }
+        textList.add(Component.translatable("sodium-extra-information.hud.show_total_entity_count")
+                .append(": ")
+                .append(String.valueOf(client.level.getEntityCount()))
+                .withColor(options.extraInformationSettings.totalEntityCountConfig.color.rgbToDecimal()));
+    }
+
+    @Unique
+    private void sodiumextrainformation$displayRenderedEntities(Minecraft client, SodiumExtraInformationGameOptions options) {
+        if (!options.extraInformationSettings.renderedEntitiesConfig.showsRenderedEntities ||
+                client.level == null) {
+            return;
         }
 
-        if (SodiumExtraInformationClientMod.options().extraInformationSettings.showsRenderedEntities) {
-            if (client.level != null) {
-                textList.add(Component.translatable("sodium-extra-information.hud.shows_rendered_entities").append(": ").append(String.valueOf(client.levelRenderer.renderedEntities)));
-            }
+        textList.add(Component.translatable("sodium-extra-information.hud.shows_rendered_entities")
+                .append(": ")
+                .append(String.valueOf(client.levelRenderer.renderedEntities))
+                .withColor(options.extraInformationSettings.renderedEntitiesConfig.color.rgbToDecimal()));
+    }
+
+    @Unique
+    private void sodiumextrainformation$displayBiome(Minecraft client, SodiumExtraInformationGameOptions options) {
+        if (!options.extraInformationSettings.biomeConfig.showBiome ||
+                client.level == null || client.player == null) {
+            return;
         }
 
-        if (SodiumExtraInformationClientMod.options().extraInformationSettings.showBiome) {
-            if (client.level != null && client.player != null) {
-                ClientLevel level = client.level;
-                BlockPos playerPos = client.player.blockPosition();
-                Biome biome = level.getBiome(playerPos).value();
-                String biomeName = level.registryAccess().registryOrThrow(Registries.BIOME).getKey(biome).toString();
-                MutableComponent txt = biomeName.startsWith("minecraft:")
-                        ? Component.translatable("biome.minecraft." + biomeName.substring("minecraft:".length()))
-                        : Component.literal(biomeName);
+        ClientLevel level = client.level;
+        BlockPos playerPos = client.player.blockPosition();
+        Biome biome = level.getBiome(playerPos).value();
+        String biomeName = level.registryAccess().registryOrThrow(Registries.BIOME).getKey(biome).toString();
 
-                textList.add(txt);
-            }
-        }
+        MutableComponent txt = biomeName.startsWith("minecraft:")
+                ? Component.translatable("biome.minecraft." + biomeName.substring("minecraft:".length()))
+                : Component.literal(biomeName);
+
+        textList.add(txt.withColor(options.extraInformationSettings.biomeConfig.color.rgbToDecimal()));
     }
 }

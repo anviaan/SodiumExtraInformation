@@ -1,1 +1,3 @@
-- Fixing version 1.21
+- Add Anvian's Library integration 
+- Config file was refactored
+- Every text can have a custom color

@@ -13,6 +13,8 @@ val SODIUM_VERSION: String by rootProject.extra
 val SODIUM_EXTRA_VERSION: String by rootProject.extra
 val ARCHIVE_NAME: String by rootProject.extra
 
+val ANVIANS_LIB: String by rootProject.extra
+
 base {
     archivesName = "$ARCHIVE_NAME-neoforge"
 }
@@ -89,6 +91,8 @@ dependencies {
     compileOnly(project(":common"))
     implementation("maven.modrinth:sodium:$SODIUM_VERSION-neoforge")
     implementation("maven.modrinth:sodium-extra:$SODIUM_EXTRA_VERSION+neoforge")
+
+    implementation("net.anvian.anvianslib:anvianslib-neoforge-1.21:$ANVIANS_LIB")
 }
 
 // NeoGradle compiles the game, but we don't want to add our common code to the game's code
@@ -107,15 +111,3 @@ tasks.withType<ProcessResources>().matching(notNeoTask).configureEach {
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
-
-publishing {
-    publications {
-        create<MavenPublication>("mavenJava") {
-            artifactId = base.archivesName.get()
-            from(components["java"])
-        }
-    }
-
-    repositories {
-    }
-}

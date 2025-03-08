@@ -4,6 +4,7 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.anvian.sodiumextrainformation.client.SodiumExtraInformationClientMod;
+import net.anvian.sodiumextrainformation.util.RGB;
 import net.caffeinemc.mods.sodium.client.services.PlatformRuntimeInformation;
 
 import java.io.FileReader;
@@ -21,7 +22,7 @@ public class SodiumExtraInformationGameOptions {
     private Path configPath;
 
     public static SodiumExtraInformationGameOptions load() {
-        Path path = PlatformRuntimeInformation.getInstance().getConfigDirectory().resolve(DEFAULT_FILE_NAME);
+        Path path = PlatformRuntimeInformation.getInstance().getConfigDirectory().resolve(SodiumExtraInformationClientMod.MOD_ID).resolve(DEFAULT_FILE_NAME);
         SodiumExtraInformationGameOptions config;
 
         if (Files.exists(path)) {
@@ -36,8 +37,8 @@ public class SodiumExtraInformationGameOptions {
 
         config.configPath = path;
 
-        if (!config.extraInformationSettings.validateTimeFormat(config.extraInformationSettings.localTimeFormat)) {
-            config.extraInformationSettings.localTimeFormat = "HH:mm:ss";
+        if (!config.extraInformationSettings.localTimeConfig.validateTimeFormat(config.extraInformationSettings.localTimeConfig.localTimeFormat)) {
+            config.extraInformationSettings.localTimeConfig.localTimeFormat = "HH:mm:ss";
         }
 
         try {
@@ -62,34 +63,104 @@ public class SodiumExtraInformationGameOptions {
     }
 
     public static class ExtraInformationSettings {
-        public boolean showLocalTime;
-        public String localTimeFormat;
-        public boolean showWordTime;
-        public boolean showSessionTime;
-        public boolean showMemoryUsage;
-        public boolean showMemoryUsageExtended;
-        public boolean showTotalEntityCount;
-        public boolean showsRenderedEntities;
-        public boolean showBiome;
+        public LocalTimeConfig localTimeConfig;
+        public WordTimeConfig wordTimeConfig;
+        public SessionTimeConfig sessionTimeConfig;
+        public MemoryUsageConfig memoryUsageConfig;
+        public TotalEntityCountConfig totalEntityCountConfig;
+        public RenderedEntitiesConfig renderedEntitiesConfig;
+        public BiomeConfig biomeConfig;
 
         public ExtraInformationSettings() {
-            this.showLocalTime = false;
-            this.localTimeFormat = "HH:mm";
-            this.showWordTime = false;
-            this.showSessionTime = false;
-            this.showMemoryUsage = false;
-            this.showMemoryUsageExtended = false;
-            this.showTotalEntityCount = false;
-            this.showsRenderedEntities = false;
-            this.showBiome = false;
+            this.localTimeConfig = new LocalTimeConfig();
+            this.wordTimeConfig = new WordTimeConfig();
+            this.sessionTimeConfig = new SessionTimeConfig();
+            this.memoryUsageConfig = new MemoryUsageConfig();
+            this.totalEntityCountConfig = new TotalEntityCountConfig();
+            this.renderedEntitiesConfig = new RenderedEntitiesConfig();
+            this.biomeConfig = new BiomeConfig();
         }
 
-        private boolean validateTimeFormat(String format) {
-            try {
-                DateTimeFormatter.ofPattern(format);
-                return true;
-            } catch (IllegalArgumentException | DateTimeParseException e) {
-                return false;
+        public static class LocalTimeConfig {
+            public boolean showLocalTime;
+            public String localTimeFormat;
+            public RGB color;
+
+            public LocalTimeConfig() {
+                this.showLocalTime = false;
+                this.localTimeFormat = "HH:mm";
+                this.color = new RGB();
+            }
+
+            private boolean validateTimeFormat(String format) {
+                try {
+                    DateTimeFormatter.ofPattern(format);
+                    return true;
+                } catch (IllegalArgumentException | DateTimeParseException e) {
+                    return false;
+                }
+            }
+        }
+
+        public static class WordTimeConfig {
+            public boolean showWordTime;
+            public RGB color;
+
+            public WordTimeConfig() {
+                this.showWordTime = false;
+                this.color = new RGB();
+            }
+        }
+
+        public static class SessionTimeConfig {
+            public boolean showSessionTime;
+            public  RGB color;
+
+            public SessionTimeConfig() {
+                this.showSessionTime = false;
+                this.color = new RGB();
+            }
+        }
+
+        public static class MemoryUsageConfig {
+            public boolean showMemoryUsage;
+            public boolean showMemoryUsageExtended;
+            public RGB color;
+
+            public MemoryUsageConfig() {
+                this.showMemoryUsage = false;
+                this.showMemoryUsageExtended = false;
+                this.color = new RGB();
+            }
+        }
+
+        public static class TotalEntityCountConfig {
+            public boolean showTotalEntityCount;
+            public RGB color;
+
+            public TotalEntityCountConfig() {
+                this.showTotalEntityCount = false;
+                this.color = new RGB();
+            }
+        }
+
+        public static class RenderedEntitiesConfig {
+            public boolean showsRenderedEntities;
+            public RGB color;
+
+            public RenderedEntitiesConfig() {
+                this.showsRenderedEntities = false;
+                this.color = new RGB();
+            }
+        }
+
+        public static class BiomeConfig {
+            public boolean showBiome;
+            public RGB color;
+
+            public BiomeConfig() {
+                this.showBiome = false;
+                this.color = new RGB();
             }
         }
     }
