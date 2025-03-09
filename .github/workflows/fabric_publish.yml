@@ -64,5 +64,6 @@ jobs:
             fabric-api
             sodium
             sodium-extra
+            anvians-lib
 
           java: ${{ env.JAVA_VERSION }}
