@@ -35,7 +35,7 @@ jobs:
         run: ./gradlew printEnv
 
       - name: Build
-        run: ./gradlew fabric:build
+        run: ./gradlew build
 
       - name: Publish (Modrinth & CurseForge)
         uses: Kir-Antipov/mc-publish@v3.3
@@ -47,7 +47,7 @@ jobs:
           curseforge-token: ${{ env.CURSEFORGE_TOKEN }}
 
           files: |
-            fabric/build/libs/!(*-@(dev|sources|javadoc|shadow)).jar
+            build/libs/!(*-@(dev|sources|javadoc|shadow)).jar
 
           name: ${{ env.RELEASE_NAME }}
           version: ${{ env.MOD_VERSION }}
