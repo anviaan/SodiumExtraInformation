@@ -5,6 +5,8 @@ client-side mod, meaning that it only needs to be installed on the client side.
 
 ## Features
 
+- **Change the color of the text**
+
 - Show Local Time
 - Show World Time (days)
 - Show Session Time
