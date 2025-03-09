@@ -1,1 +1,3 @@
 - Add Anvian's Library integration 
+- Config file was refactored
+- Every text can have a custom color
