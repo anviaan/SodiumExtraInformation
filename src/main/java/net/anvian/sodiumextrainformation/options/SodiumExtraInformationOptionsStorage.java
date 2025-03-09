@@ -3,6 +3,8 @@ package net.anvian.sodiumextrainformation.options;
 import me.jellysquid.mods.sodium.client.gui.options.storage.OptionStorage;
 import net.anvian.sodiumextrainformation.SodiumExtraInformationClient;
 
+import java.io.IOException;
+
 public class SodiumExtraInformationOptionsStorage implements OptionStorage<SodiumExtraInformationGameOptions> {
     private final SodiumExtraInformationGameOptions options = SodiumExtraInformationClient.options();
 
@@ -13,6 +15,12 @@ public class SodiumExtraInformationOptionsStorage implements OptionStorage<Sodiu
 
     @Override
     public void save() {
-        this.options.writeChanges();
+        try {
+            this.options.writeChanges();
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to save options", e);
+        }
+
+        SodiumExtraInformationClient.logger().info("Saved options");
     }
 }

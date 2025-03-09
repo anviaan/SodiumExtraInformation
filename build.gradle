@@ -1,6 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.7-SNAPSHOT'
-    id 'maven-publish'
+    id 'fabric-loom' version '1.9-SNAPSHOT'
 }
 
 version = project.mod_version
@@ -8,6 +7,10 @@ group = project.maven_group
 
 base {
     archivesName = project.archives_base_name
+}
+
+loom {
+    accessWidenerPath = file("src/main/resources/sodiumextrainformation.accesswidener")
 }
 
 repositories {
@@ -24,11 +27,14 @@ repositories {
     maven {
         url "https://maven.flashyreese.me/releases"
     }
+    maven {
+        url "https://repo.repsy.io/mvn/anvian/anvians-lib"
+    }
 }
 
 dependencies {
-    minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    minecraft "net.minecraft:minecraft:${project.minecraft_version}"
+    mappings loom.officialMojangMappings()
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
@@ -38,6 +44,8 @@ dependencies {
     modImplementation "maven.modrinth:sodium:${project.sodium_version}"
     modImplementation "maven.modrinth:sodium-extra:${project.sodium_extra_version}"
     include(modImplementation("net.caffeinemc:CaffeineConfig:1.3.0+1.17"))
+
+    modImplementation("net.anvian.anvianslib:anvianslib-fabric-1.20:${project.anvian_lib_version}")
 }
 
 processResources {
@@ -62,22 +70,5 @@ java {
 jar {
     from("LICENSE") {
         rename { "${it}_${project.base.archivesName.get()}" }
-    }
-}
-
-publishing {
-    publications {
-        create("mavenJava", MavenPublication) {
-            artifactId = project.archives_base_name
-            from components.java
-        }
-    }
-
-    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-    repositories {
-        // Add repositories to publish to here.
-        // Notice: This block does NOT have the same function as the block in the top level.
-        // The repositories here will be used for publishing your artifact, not for
-        // retrieving dependencies.
     }
 }

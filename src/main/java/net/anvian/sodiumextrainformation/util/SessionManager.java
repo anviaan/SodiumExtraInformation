@@ -4,7 +4,7 @@ import net.anvian.sodiumextrainformation.SodiumExtraInformationClient;
 import org.slf4j.Logger;
 
 public class SessionManager {
-    private static final Logger LOGGER = SodiumExtraInformationClient.LOGGER;
+    private static final Logger LOGGER = SodiumExtraInformationClient.logger();
 
     private long sessionStartTime;
     private long totalTimePlayed;

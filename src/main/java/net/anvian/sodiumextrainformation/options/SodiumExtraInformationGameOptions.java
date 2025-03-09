@@ -4,116 +4,165 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.anvian.sodiumextrainformation.SodiumExtraInformationClient;
-import net.minecraft.util.Identifier;
+import net.anvian.sodiumextrainformation.util.RGB;
+import net.fabricmc.loader.api.FabricLoader;
 
-import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Modifier;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 public class SodiumExtraInformationGameOptions {
-    private static final Gson gson;
     public final ExtraInformationSettings extraInformationSettings = new ExtraInformationSettings();
-    private File file;
+    private static final String DEFAULT_FILE_NAME = SodiumExtraInformationClient.MOD_ID + ".json";
+    private static final Gson GSON = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).setPrettyPrinting().excludeFieldsWithModifiers(Modifier.PRIVATE).create();
+    private Path configPath;
 
-    public static SodiumExtraInformationGameOptions load(File file) {
+    public static SodiumExtraInformationGameOptions load() {
+        Path path = FabricLoader.getInstance().getConfigDir().resolve(SodiumExtraInformationClient.MOD_ID).resolve(DEFAULT_FILE_NAME);
         SodiumExtraInformationGameOptions config;
-        if (file.exists()) {
-            try {
-                FileReader reader = new FileReader(file);
 
-                try {
-                    config = gson.fromJson(reader, SodiumExtraInformationGameOptions.class);
-                } catch (Throwable var6) {
-                    try {
-                        reader.close();
-                    } catch (Throwable var5) {
-                        var6.addSuppressed(var5);
-                    }
-
-                    throw var6;
-                }
-
-                reader.close();
-            } catch (Exception e) {
-                SodiumExtraInformationClient.LOGGER.error("Could not parse config, falling back to defaults!", e);
-                config = new SodiumExtraInformationGameOptions();
+        if (Files.exists(path)) {
+            try (FileReader reader = new FileReader(path.toFile())) {
+                config = GSON.fromJson(reader, SodiumExtraInformationGameOptions.class);
+            } catch (IOException e) {
+                throw new RuntimeException("Could not parse SSPB config", e);
             }
         } else {
             config = new SodiumExtraInformationGameOptions();
         }
 
-        config.file = file;
+        config.configPath = path;
 
-        if (!config.extraInformationSettings.validateTimeFormat(config.extraInformationSettings.localTimeFormat)) {
-            config.extraInformationSettings.localTimeFormat = "HH:mm:ss";
-        }
-
-        config.writeChanges();
-        return config;
-    }
-
-    public void writeChanges() {
-        File dir = this.file.getParentFile();
-        if (!dir.exists()) {
-            if (!dir.mkdirs()) {
-                throw new RuntimeException("Could not create parent directories");
-            }
-        } else if (!dir.isDirectory()) {
-            throw new RuntimeException("The parent file is not a directory");
+        if (!config.extraInformationSettings.localTimeConfig.validateTimeFormat(config.extraInformationSettings.localTimeConfig.localTimeFormat)) {
+            config.extraInformationSettings.localTimeConfig.localTimeFormat = "HH:mm:ss";
         }
 
         try {
-            FileWriter writer = new FileWriter(this.file);
-
-            try {
-                gson.toJson(this, writer);
-            } catch (Throwable var6) {
-                try {
-                    writer.close();
-                } catch (Throwable var5) {
-                    var6.addSuppressed(var5);
-                }
-
-                throw var6;
-            }
-
-            writer.close();
+            config.writeChanges();
         } catch (IOException e) {
-            throw new RuntimeException("Could not save configuration file", e);
+            throw new RuntimeException("Couldn't update SSPB config", e);
         }
+
+        return config;
     }
 
-    static {
-        gson = (new GsonBuilder()).registerTypeAdapter(Identifier.class, new Identifier.Serializer()).setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).setPrettyPrinting().excludeFieldsWithModifiers(new int[]{2}).create();
+    public void writeChanges() throws IOException {
+        Path dir = this.configPath.getParent();
+
+        if (!Files.exists(dir)) {
+            Files.createDirectories(dir);
+        } else if (!Files.isDirectory(dir)) {
+            throw new IOException("Not a directory: " + dir);
+        }
+
+        Files.writeString(this.configPath, GSON.toJson(this));
     }
 
     public static class ExtraInformationSettings {
-        public boolean showLocalTime;
-        public String localTimeFormat;
-        public boolean showWordTime;
-        public boolean showSessionTime;
-        public boolean showMemoryUsage;
-        public boolean showMemoryUsageExtended;
+        public LocalTimeConfig localTimeConfig;
+        public WordTimeConfig wordTimeConfig;
+        public SessionTimeConfig sessionTimeConfig;
+        public MemoryUsageConfig memoryUsageConfig;
+        public TotalEntityCountConfig totalEntityCountConfig;
+        public RenderedEntitiesConfig renderedEntitiesConfig;
+        public BiomeConfig biomeConfig;
 
         public ExtraInformationSettings() {
-            this.showLocalTime = false;
-            this.localTimeFormat = "HH:mm";
-            this.showWordTime = false;
-            this.showSessionTime = false;
-            this.showMemoryUsage = false;
-            this.showMemoryUsageExtended = false;
+            this.localTimeConfig = new LocalTimeConfig();
+            this.wordTimeConfig = new WordTimeConfig();
+            this.sessionTimeConfig = new SessionTimeConfig();
+            this.memoryUsageConfig = new MemoryUsageConfig();
+            this.totalEntityCountConfig = new TotalEntityCountConfig();
+            this.renderedEntitiesConfig = new RenderedEntitiesConfig();
+            this.biomeConfig = new BiomeConfig();
         }
 
-        private boolean validateTimeFormat(String format) {
-            try {
-                DateTimeFormatter.ofPattern(format);
-                return true;
-            } catch (IllegalArgumentException | DateTimeParseException e) {
-                return false;
+        public static class LocalTimeConfig {
+            public boolean showLocalTime;
+            public String localTimeFormat;
+            public RGB color;
+
+            public LocalTimeConfig() {
+                this.showLocalTime = false;
+                this.localTimeFormat = "HH:mm";
+                this.color = new RGB();
+            }
+
+            private boolean validateTimeFormat(String format) {
+                try {
+                    DateTimeFormatter.ofPattern(format);
+                    return true;
+                } catch (IllegalArgumentException | DateTimeParseException e) {
+                    return false;
+                }
+            }
+        }
+
+        public static class WordTimeConfig {
+            public boolean showWordTime;
+            public RGB color;
+
+            public WordTimeConfig() {
+                this.showWordTime = false;
+                this.color = new RGB();
+            }
+        }
+
+        public static class SessionTimeConfig {
+            public boolean showSessionTime;
+            public RGB color;
+
+            public SessionTimeConfig() {
+                this.showSessionTime = false;
+                this.color = new RGB();
+            }
+        }
+
+        public static class MemoryUsageConfig {
+            public boolean showMemoryUsage;
+            public boolean showMemoryUsageExtended;
+            public RGB color;
+
+            public MemoryUsageConfig() {
+                this.showMemoryUsage = false;
+                this.showMemoryUsageExtended = false;
+                this.color = new RGB();
+            }
+        }
+
+        public static class TotalEntityCountConfig {
+            public boolean showTotalEntityCount;
+            public RGB color;
+
+            public TotalEntityCountConfig() {
+                this.showTotalEntityCount = false;
+                this.color = new RGB();
+            }
+        }
+
+        public static class RenderedEntitiesConfig {
+            public boolean showsRenderedEntities;
+            public RGB color;
+
+            public RenderedEntitiesConfig() {
+                this.showsRenderedEntities = false;
+                this.color = new RGB();
+            }
+        }
+
+        public static class BiomeConfig {
+            public boolean showBiome;
+            public RGB color;
+
+            public BiomeConfig() {
+                this.showBiome = false;
+                this.color = new RGB();
             }
         }
     }
+
 }

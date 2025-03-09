@@ -7,13 +7,12 @@ import me.jellysquid.mods.sodium.client.gui.options.OptionImpl;
 import me.jellysquid.mods.sodium.client.gui.options.OptionPage;
 import me.jellysquid.mods.sodium.client.gui.options.control.TickBoxControl;
 import net.anvian.sodiumextrainformation.options.SodiumExtraInformationOptionsStorage;
-import net.minecraft.text.Text;
+import net.minecraft.network.chat.Component;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,46 +20,64 @@ import java.util.List;
 @Mixin(value = SodiumExtraGameOptionPages.class, remap = false)
 public class SodiumExtraGameOptionPagesMixin {
     @Unique
-    private static final SodiumExtraInformationOptionsStorage sodiumExtraOpts = new SodiumExtraInformationOptionsStorage();
+    private static final SodiumExtraInformationOptionsStorage sodiumExtraInformation$sodiumExtraOpts = new SodiumExtraInformationOptionsStorage();
 
-    @Inject(method = "extra", at = @At("RETURN"), locals = LocalCapture.CAPTURE_FAILHARD, cancellable = true)
+    @Inject(method = "extra", at = @At("RETURN"), cancellable = true)
     private static void inject(CallbackInfoReturnable<OptionPage> cir) {
         OptionPage optionPage = cir.getReturnValue();
         List<OptionGroup> groups = new ArrayList<>(optionPage.getGroups());
 
         groups.add(OptionGroup.createBuilder()
-                .add(OptionImpl.createBuilder(Boolean.TYPE, sodiumExtraOpts)
-                        .setName(Text.of("Local Time"))
-                        .setTooltip(Text.of("Show the local time on the overlay."))
+                .add(OptionImpl.createBuilder(Boolean.TYPE, sodiumExtraInformation$sodiumExtraOpts)
+                        .setName(Component.translatable("sodium-extra-information.options.local_time"))
+                        .setTooltip(Component.translatable("sodium-extra-information.options.local_time.tooltip"))
                         .setControl(TickBoxControl::new)
-                        .setBinding((opts, value) -> opts.extraInformationSettings.showLocalTime = value, opts -> opts.extraInformationSettings.showLocalTime)
+                        .setBinding((opts, value) -> opts.extraInformationSettings.localTimeConfig.showLocalTime = value, opts -> opts.extraInformationSettings.localTimeConfig.showLocalTime)
                         .build())
-                .add(OptionImpl.createBuilder(Boolean.TYPE, sodiumExtraOpts)
-                        .setName(Text.of("Word time"))
-                        .setTooltip(Text.of("Show the word time on the overlay."))
+                .add(OptionImpl.createBuilder(Boolean.TYPE, sodiumExtraInformation$sodiumExtraOpts)
+                        .setName(Component.translatable("sodium-extra-information.options.word_time"))
+                        .setTooltip(Component.translatable("sodium-extra-information.options.word_time.tooltip"))
                         .setControl(TickBoxControl::new)
-                        .setBinding((opts, value) -> opts.extraInformationSettings.showWordTime = value, opts -> opts.extraInformationSettings.showWordTime)
+                        .setBinding((opts, value) -> opts.extraInformationSettings.wordTimeConfig.showWordTime = value, opts -> opts.extraInformationSettings.wordTimeConfig.showWordTime)
                         .build())
-                .add(OptionImpl.createBuilder(Boolean.TYPE, sodiumExtraOpts)
-                        .setName(Text.of("Session time"))
-                        .setTooltip(Text.of("Show the time you have been in the current session in the overlay”."))
+                .add(OptionImpl.createBuilder(Boolean.TYPE, sodiumExtraInformation$sodiumExtraOpts)
+                        .setName(Component.translatable("sodium-extra-information.options.session_time"))
+                        .setTooltip(Component.translatable("sodium-extra-information.options.session_time.tooltip"))
                         .setControl(TickBoxControl::new)
-                        .setBinding((opts, value) -> opts.extraInformationSettings.showSessionTime = value, opts -> opts.extraInformationSettings.showSessionTime)
+                        .setBinding((opts, value) -> opts.extraInformationSettings.sessionTimeConfig.showSessionTime = value, opts -> opts.extraInformationSettings.sessionTimeConfig.showSessionTime)
                         .build())
-                .add(OptionImpl.createBuilder(Boolean.TYPE, sodiumExtraOpts)
-                        .setName(Text.of("Memory usage"))
-                        .setTooltip(Text.of("Show the memory usage on the overlay."))
+                .add(OptionImpl.createBuilder(Boolean.TYPE, sodiumExtraInformation$sodiumExtraOpts)
+                        .setName(Component.translatable("sodium-extra-information.options.memory_usage"))
+                        .setTooltip(Component.translatable("sodium-extra-information.options.memory_usage.tooltip"))
                         .setControl(TickBoxControl::new)
-                        .setBinding((opts, value) -> opts.extraInformationSettings.showMemoryUsage = value, opts -> opts.extraInformationSettings.showMemoryUsage)
+                        .setBinding((opts, value) -> opts.extraInformationSettings.memoryUsageConfig.showMemoryUsage = value, opts -> opts.extraInformationSettings.memoryUsageConfig.showMemoryUsage)
                         .build())
-                .add(OptionImpl.createBuilder(Boolean.TYPE, sodiumExtraOpts)
-                        .setName(Text.of("Memory usage Extended"))
-                        .setTooltip(Text.of("Show a more detailed memory usage on the overlay."))
+                .add(OptionImpl.createBuilder(Boolean.TYPE, sodiumExtraInformation$sodiumExtraOpts)
+                        .setName(Component.translatable("sodium-extra-information.options.memory_usage_extended"))
+                        .setTooltip(Component.translatable("sodium-extra-information.options.memory_usage_extended.tooltip"))
                         .setControl(TickBoxControl::new)
-                        .setBinding((opts, value) -> opts.extraInformationSettings.showMemoryUsageExtended = value, opts -> opts.extraInformationSettings.showMemoryUsageExtended)
+                        .setBinding((opts, value) -> opts.extraInformationSettings.memoryUsageConfig.showMemoryUsageExtended = value, opts -> opts.extraInformationSettings.memoryUsageConfig.showMemoryUsageExtended)
+                        .build())
+                .add(OptionImpl.createBuilder(Boolean.TYPE, sodiumExtraInformation$sodiumExtraOpts)
+                        .setName(Component.translatable("sodium-extra-information.options.show_total_entity_count"))
+                        .setTooltip(Component.translatable("sodium-extra-information.options.show_total_entity_count.tooltip"))
+                        .setControl(TickBoxControl::new)
+                        .setBinding((opts, value) -> opts.extraInformationSettings.totalEntityCountConfig.showTotalEntityCount = value, opts -> opts.extraInformationSettings.totalEntityCountConfig.showTotalEntityCount)
+                        .build())
+                .add(OptionImpl.createBuilder(Boolean.TYPE, sodiumExtraInformation$sodiumExtraOpts)
+                        .setName(Component.translatable("sodium-extra-information.options.shows_rendered_entities"))
+                        .setTooltip(Component.translatable("sodium-extra-information.options.shows_rendered_entities.tooltip"))
+                        .setControl(TickBoxControl::new)
+                        .setBinding((opts, value) -> opts.extraInformationSettings.renderedEntitiesConfig.showsRenderedEntities = value, opts -> opts.extraInformationSettings.renderedEntitiesConfig.showsRenderedEntities)
+                        .build())
+                .add(OptionImpl.createBuilder(Boolean.TYPE, sodiumExtraInformation$sodiumExtraOpts)
+                        .setName(Component.translatable("sodium-extra-information.options.show_biome"))
+                        .setTooltip(Component.translatable("sodium-extra-information.options.show_biome.tooltip"))
+                        .setControl(TickBoxControl::new)
+                        .setBinding((opts, value) -> opts.extraInformationSettings.biomeConfig.showBiome = value, opts -> opts.extraInformationSettings.biomeConfig.showBiome)
                         .build())
                 .build());
 
-        cir.setReturnValue(new OptionPage(Text.translatable("sodium-extra.option.extras"), ImmutableList.copyOf(groups)));
+        cir.setReturnValue(new OptionPage(Component.translatable("sodium-extra.option.extras"), ImmutableList.copyOf(groups)));
     }
 }
