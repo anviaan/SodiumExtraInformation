@@ -38,6 +38,13 @@ versionRange = "[0.6.0,)"
 ordering = "NONE"
 side = "CLIENT"
 
+[[dependencies.sodiumextrainformation]]
+modId = "anvianslib"
+type = "required"
+versionRange = "[1.2,)"
+ordering = "NONE"
+side = "CLIENT"
+
 [[mixins]]
 config = "sodiumextrainformation.mixins.json"
 

@@ -1,10 +1,8 @@
 package net.anvian.sodiumextrainformation.client;
 
-import net.anvian.anvianslib.config.TelemetryConfigManager;
 import net.anvian.anvianslib.util.LibUtil;
 import net.anvian.sodiumextrainformation.options.SodiumExtraInformationGameOptions;
 import net.anvian.sodiumextrainformation.util.SessionManager;
-import net.caffeinemc.mods.sodium.client.services.PlatformRuntimeInformation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,8 +33,7 @@ public class SodiumExtraInformationClientMod {
     }
 
     public static void onInitialization() {
-        LibUtil.generateConfigPath(MOD_ID, PlatformRuntimeInformation.getInstance().getConfigDirectory());
-        TelemetryConfigManager.sendTelemetryData(MOD_ID, MOD_VERSION);
+        LibUtil.setupTelemetry(MOD_ID, MOD_VERSION);
 
         CONFIG = SodiumExtraInformationGameOptions.load();
     }
