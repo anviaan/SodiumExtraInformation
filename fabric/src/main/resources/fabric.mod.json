@@ -39,6 +39,7 @@
     "fabricloader": ">=0.16",
     "sodium": ">=0.6.0",
     "sodium-extra": ">=0.6.0",
+    "anvianslib": ">=1.2",
     "minecraft": ">=1.21.2"
   },
   "breaks": {
