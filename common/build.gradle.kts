@@ -3,7 +3,7 @@ import net.fabricmc.loom.task.AbstractRemapJarTask
 plugins {
     id("java")
     id("idea")
-    id("fabric-loom") version "1.8.9"
+    id("fabric-loom") version "1.11-SNAPSHOT"
 }
 
 val MINECRAFT_VERSION: String by rootProject.extra
@@ -33,20 +33,24 @@ dependencies {
     annotationProcessor("io.github.llamalad7:mixinextras-common:0.3.5")
     compileOnly("net.fabricmc:sponge-mixin:0.13.2+mixin.0.8.5")
 
-    fun addDependentFabricModule(name: String) {
-        val module = fabricApi.module(name, FABRIC_API_VERSION)
-        modCompileOnly(module)
-    }
+//    fun addDependentFabricModule(name: String) {
+//        val module = fabricApi.module(name, FABRIC_API_VERSION)
+//        modCompileOnly(module)
+//    }
+//
+//    addDependentFabricModule("fabric-api-base")
+//    addDependentFabricModule("fabric-block-view-api-v2")
+//    addDependentFabricModule("fabric-renderer-api-v1")
+//    addDependentFabricModule("fabric-attachment-api-v1")
+//    addDependentFabricModule("fabric-rendering-fluids-v1")
+//    addDependentFabricModule("fabric-resource-loader-v0")
 
-    addDependentFabricModule("fabric-api-base")
-    addDependentFabricModule("fabric-block-view-api-v2")
-    addDependentFabricModule("fabric-renderer-api-v1")
-    addDependentFabricModule("fabric-rendering-data-attachment-v1")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:$FABRIC_API_VERSION")
 
     modImplementation("maven.modrinth:sodium:$SODIUM_VERSION-fabric")
     modImplementation("maven.modrinth:sodium-extra:$SODIUM_EXTRA_VERSION+fabric")
 
-    modImplementation("net.anvian.anvianslib:anvianslib-common-1.21:$ANVIANS_LIB")
+    modImplementation("net.anvian.anvianslib:anvianslib-common-1.21.10:$ANVIANS_LIB")
 }
 
 tasks.withType<AbstractRemapJarTask>().forEach {
@@ -58,5 +62,5 @@ loom {
         defaultRefmapName = "${rootProject.name}.refmap.json"
     }
 
-    accessWidenerPath = file("src/main/resources/${rootProject.name}.accesswidener")
+    //accessWidenerPath = file("src/main/resources/${rootProject.name}.accesswidener")
 }

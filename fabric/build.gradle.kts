@@ -1,7 +1,7 @@
 plugins {
     id("java")
     id("idea")
-    id("fabric-loom") version ("1.8.9")
+    id("fabric-loom") version ("1.11-SNAPSHOT")
 }
 
 val MINECRAFT_VERSION: String by rootProject.extra
@@ -34,18 +34,37 @@ dependencies {
         }
     })
     modImplementation("net.fabricmc:fabric-loader:$FABRIC_LOADER_VERSION")
-    modImplementation("net.fabricmc.fabric-api:fabric-api:${FABRIC_API_VERSION}")
+
+//    fun addEmbeddedFabricModule(name: String) {
+//        val module = fabricApi.module(name, FABRIC_API_VERSION)
+//        modImplementation(module)
+//    }
+//
+//    // Fabric API modules
+//    addEmbeddedFabricModule("fabric-api-base")
+//    addEmbeddedFabricModule("fabric-block-view-api-v2")
+//    addEmbeddedFabricModule("fabric-renderer-api-v1")
+//    addEmbeddedFabricModule("fabric-attachment-api-v1")
+//    addEmbeddedFabricModule("fabric-rendering-fluids-v1")
+//    addEmbeddedFabricModule("fabric-resource-loader-v0")
+
+    modImplementation("net.fabricmc.fabric-api:fabric-api:$FABRIC_API_VERSION")
 
     compileOnly(project(":common"))
     modImplementation("maven.modrinth:sodium:$SODIUM_VERSION-fabric")
+    modRuntimeOnly("maven.modrinth:reeses-sodium-options:mc1.21.9-1.8.5+fabric")
     modImplementation("maven.modrinth:sodium-extra:$SODIUM_EXTRA_VERSION+fabric")
     modLocalRuntime("com.terraformersmc:modmenu:$MODMENU_VERSION")
 
-    modImplementation("net.anvian.anvianslib:anvianslib-fabric-1.21:$ANVIANS_LIB")
+    modImplementation("net.anvian.anvianslib:anvianslib-fabric-1.21.10:$ANVIANS_LIB")
+}
+
+tasks.test {
+    failOnNoDiscoveredTests = false
 }
 
 loom {
-    accessWidenerPath.set(project(":common").file("src/main/resources/${rootProject.name}.accesswidener"))
+    //accessWidenerPath.set(project(":common").file("src/main/resources/${rootProject.name}.accesswidener"))
 
     @Suppress("UnstableApiUsage")
     mixin { defaultRefmapName.set("${rootProject.name}.refmap.json") }

@@ -6,6 +6,7 @@
   "compatibilityLevel": "JAVA_17",
   "client": [
     "EndTickMixin",
+    "LevelRendererAccessor",
     "SodiumExtraGameOptionPagesMixin",
     "SodiumExtraHudMixin"
   ],

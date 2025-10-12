@@ -1,6 +1,6 @@
 plugins {
     id("idea")
-    id("net.neoforged.moddev") version "1.0.11"
+    id("net.neoforged.moddev") version "2.0.110"
     id("java-library")
 }
 
@@ -20,7 +20,7 @@ base {
 }
 
 repositories {
-    maven("https://maven.pkg.github.com/ims212/Forge_Fabric_API") {
+    maven("https://maven.pkg.github.com/ims212/FRAPI-Testing") {
         credentials {
             username = "IMS212"
             // Read only token
@@ -55,14 +55,15 @@ neoForge {
     // Specify the version of NeoForge to use.
     version = NEOFORGE_VERSION
 
-    parchment {
+    /*parchment {
         mappingsVersion = PARCHMENT_VERSION
         minecraftVersion = MINECRAFT_VERSION
-    }
+    }*/
 
     runs {
         create("client") {
             client()
+            ideName = "NeoForge/Client"
         }
     }
 
