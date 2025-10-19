@@ -1,3 +1,1 @@
-- Add Anvian's Library integration 
-- Config file was refactored
-- Every text can have a custom color
+- Updating mod to support Anvian's lib 1.4
