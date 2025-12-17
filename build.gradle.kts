@@ -1,27 +1,28 @@
 plugins {
     id("java")
-    id("fabric-loom") version ("1.11-SNAPSHOT") apply (false)
+    id("fabric-loom") version ("1.14-SNAPSHOT") apply (false)
 }
 
-val MINECRAFT_VERSION by extra { "1.21.10" }
-val NEOFORGE_VERSION by extra { "21.9.11-beta" }
-val FABRIC_LOADER_VERSION by extra { "0.17.2" }
-val FABRIC_API_VERSION by extra { "0.134.0+1.21.9" }
+val MINECRAFT_VERSION by extra { "1.21.11" }
+val NEOFORGE_VERSION by extra { "21.11.0-beta" }
+val FABRIC_LOADER_VERSION by extra { "0.18.1" }
+val FABRIC_API_VERSION by extra { "0.139.4+1.21.11" }
+
 
 // This value can be set to null to disable Parchment.
 val PARCHMENT_VERSION by extra { null }
 
 // https://semver.org/
-val MAVEN_GROUP by extra { "me.flashyreese.mods" }
-val ARCHIVE_NAME by extra { "sodium-extra" }
-val MOD_VERSION by extra { "2.6.2" }
-val SODIUM_VERSION by extra { "mc1.21.9-0.7.0" }
-val SODIUM_EXTRA_VERSION by extra { "mc1.21.9-0.7.0" }
-val MODMENU_VERSION by extra { "16.0.0-rc.1" }
+val MAVEN_GROUP by extra { "net.anvian" }
+val ARCHIVE_NAME by extra { "sodium-extra-information" }
+val MOD_VERSION by extra { "2.6.3" }
+val SODIUM_VERSION by extra { "0.8.0+mc1.21.11" }
+val SODIUM_EXTRA_VERSION by extra { "mc1.21.11-0.8.0" }
+val MODMENU_VERSION by extra { "17.0.0-alpha.1" }
 
-val ANVIANS_LIB by extra {"1.3.1"}
+val ANVIANS_LIB by extra {"1.4"}
 
-val COMPATIBLE_VERSIONS by extra { "[1.21.9, 1.22)" }
+val COMPATIBLE_VERSIONS by extra { "[1.21.11, 1.22)" }
 
 allprojects {
     apply(plugin = "java")
@@ -39,6 +40,8 @@ subprojects {
 
     repositories {
         maven("https://maven.parchmentmc.org/")
+        maven("https://maven.caffeinemc.net/releases")
+        maven("https://maven.caffeinemc.net/snapshots")
         maven("https://api.modrinth.com/maven")
         maven("https://libraries.minecraft.net")
         maven("https://repo.repsy.io/mvn/anvian/anvians-lib")

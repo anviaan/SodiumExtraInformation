@@ -3,63 +3,75 @@ package net.anvian.sodiumextrainformation.options;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import me.flashyreese.mods.sodiumextra.common.util.IdentifierSerializer;
 import net.anvian.sodiumextrainformation.client.SodiumExtraInformationClientMod;
 import net.anvian.sodiumextrainformation.util.RGB;
-import net.caffeinemc.mods.sodium.client.services.PlatformRuntimeInformation;
+import net.caffeinemc.mods.sodium.api.config.StorageEventHandler;
+import net.minecraft.resources.Identifier;
 
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Modifier;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-public class SodiumExtraInformationGameOptions {
+public class SodiumExtraInformationGameOptions implements StorageEventHandler {
+    private static final Gson gson = new GsonBuilder()
+            .registerTypeAdapter(Identifier.class, new IdentifierSerializer())
+            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+            .setPrettyPrinting()
+            .excludeFieldsWithModifiers(Modifier.PRIVATE)
+            .create();
     public final ExtraInformationSettings extraInformationSettings = new ExtraInformationSettings();
-    private static final String DEFAULT_FILE_NAME = SodiumExtraInformationClientMod.MOD_ID + ".json";
-    private static final Gson GSON = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).setPrettyPrinting().excludeFieldsWithModifiers(Modifier.PRIVATE).create();
-    private Path configPath;
+    private File file;
 
-    public static SodiumExtraInformationGameOptions load() {
-        Path path = PlatformRuntimeInformation.getInstance().getConfigDirectory().resolve(SodiumExtraInformationClientMod.MOD_ID).resolve(DEFAULT_FILE_NAME);
+    public static SodiumExtraInformationGameOptions load(File file) {
         SodiumExtraInformationGameOptions config;
 
-        if (Files.exists(path)) {
-            try (FileReader reader = new FileReader(path.toFile())) {
-                config = GSON.fromJson(reader, SodiumExtraInformationGameOptions.class);
-            } catch (IOException e) {
-                throw new RuntimeException("Could not parse SSPB config", e);
+        if (file.exists()) {
+            try (FileReader reader = new FileReader(file)) {
+                config = gson.fromJson(reader, SodiumExtraInformationGameOptions.class);
+            } catch (Exception e) {
+                SodiumExtraInformationClientMod.logger().error("Could not parse config, falling back to defaults!", e);
+                config = new SodiumExtraInformationGameOptions();
             }
         } else {
             config = new SodiumExtraInformationGameOptions();
         }
 
-        config.configPath = path;
-
         if (!config.extraInformationSettings.localTimeConfig.validateTimeFormat(config.extraInformationSettings.localTimeConfig.localTimeFormat)) {
             config.extraInformationSettings.localTimeConfig.localTimeFormat = "HH:mm:ss";
         }
 
-        try {
-            config.writeChanges();
-        } catch (IOException e) {
-            throw new RuntimeException("Couldn't update SSPB config", e);
-        }
+        config.file = file;
+        config.writeChanges();
 
         return config;
     }
 
-    public void writeChanges() throws IOException {
-        Path dir = this.configPath.getParent();
+    public void writeChanges() {
+        File dir = this.file.getParentFile();
 
-        if (!Files.exists(dir)) {
-            Files.createDirectories(dir);
-        } else if (!Files.isDirectory(dir)) {
-            throw new IOException("Not a directory: " + dir);
+        if (!dir.exists()) {
+            if (!dir.mkdirs()) {
+                throw new RuntimeException("Could not create parent directories");
+            }
+        } else if (!dir.isDirectory()) {
+            throw new RuntimeException("The parent file is not a directory");
         }
 
-        Files.writeString(this.configPath, GSON.toJson(this));
+        try (FileWriter writer = new FileWriter(this.file)) {
+            gson.toJson(this, writer);
+        } catch (IOException e) {
+            throw new RuntimeException("Could not save configuration file", e);
+        }
+    }
+
+    @Override
+    public void afterSave() {
+        this.writeChanges();
     }
 
     public static class ExtraInformationSettings {
@@ -114,7 +126,7 @@ public class SodiumExtraInformationGameOptions {
 
         public static class SessionTimeConfig {
             public boolean showSessionTime;
-            public  RGB color;
+            public RGB color;
 
             public SessionTimeConfig() {
                 this.showSessionTime = false;

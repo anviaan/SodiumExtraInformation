@@ -1,6 +1,6 @@
 plugins {
     id("idea")
-    id("net.neoforged.moddev") version "2.0.110"
+    id("net.neoforged.moddev") version "2.0.123"
     id("java-library")
 }
 
@@ -20,15 +20,10 @@ base {
 }
 
 repositories {
-    maven("https://maven.pkg.github.com/ims212/FRAPI-Testing") {
-        credentials {
-            username = "IMS212"
-            // Read only token
-            password = "ghp_" + "DEuGv0Z56vnSOYKLCXdsS9svK4nb9K39C1Hn"
-        }
-    }
     maven("https://maven.su5ed.dev/releases")
     maven("https://maven.neoforged.net/releases/")
+    maven("https://maven.caffeinemc.net/releases")
+    maven("https://maven.caffeinemc.net/snapshots")
 
     exclusiveContent {
         forRepository {
@@ -90,14 +85,16 @@ tasks.named("compileTestJava").configure {
 
 dependencies {
     compileOnly(project(":common"))
-    implementation("maven.modrinth:sodium:$SODIUM_VERSION-neoforge")
+    implementation("net.caffeinemc:sodium-neoforge-mod:$SODIUM_VERSION")
     implementation("maven.modrinth:sodium-extra:$SODIUM_EXTRA_VERSION+neoforge")
 
-    implementation("net.anvian.anvianslib:anvianslib-neoforge-1.21:$ANVIANS_LIB")
+    implementation("net.anvian.anvianslib:anvianslib-neoforge-1.21:${ANVIANS_LIB}")
 }
 
 // NeoGradle compiles the game, but we don't want to add our common code to the game's code
-val notNeoTask: (Task) -> Boolean = { it: Task -> !it.name.startsWith("neo") && !it.name.startsWith("compileService") }
+val notNeoTask: (Task) -> Boolean = { it: Task ->
+    !it.name.startsWith("neo") && !it.name.startsWith("compileService")
+}
 
 tasks.withType<JavaCompile>().matching(notNeoTask).configureEach {
     source(project(":common").sourceSets.main.get().allSource)
