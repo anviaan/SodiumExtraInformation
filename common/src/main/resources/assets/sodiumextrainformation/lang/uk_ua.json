@@ -17,5 +17,6 @@
     "sodium-extra-information.options.shows_rendered_entities.tooltip": "Показати кількість сутностей, які відображаються на екрані.",
     "sodium-extra-information.hud.shows_rendered_entities": "Відтворені сутності",
     "sodium-extra-information.options.show_biome": "Показати біом",
-    "sodium-extra-information.options.show_biome.tooltip": "Покажіть біом, у якому ви перебуваєте."
+    "sodium-extra-information.options.show_biome.tooltip": "Покажіть біом, у якому ви перебуваєте.",
+    "sodium-extra-information.options.name": "Додаткова інформація про натрій"
 }

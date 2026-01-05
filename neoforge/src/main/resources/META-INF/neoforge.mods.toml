@@ -20,28 +20,28 @@ A Sodium Extra addon that adds more in-game information.
 [[dependencies.sodiumextrainformation]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21.2,1.22)"
+versionRange = "[1.21.11,1.22)"
 ordering = "NONE"
 side = "CLIENT"
 
 [[dependencies.sodiumextrainformation]]
 modId = "sodium"
 type = "required"
-versionRange = "[0.6.0,)"
+versionRange = "[0.8.2,)"
 ordering = "NONE"
 side = "CLIENT"
 
 [[dependencies.sodiumextrainformation]]
 modId = "sodium_extra"
 type = "required"
-versionRange = "[0.6.0,)"
+versionRange = "[0.8.2,)"
 ordering = "NONE"
 side = "CLIENT"
 
 [[dependencies.sodiumextrainformation]]
 modId = "anvianslib"
 type = "required"
-versionRange = "[1.2,)"
+versionRange = "[1.4,)"
 ordering = "NONE"
 side = "CLIENT"
 

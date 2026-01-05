@@ -1,8 +1,8 @@
 package net.anvian.sodiumextrainformation.mixin;
 
-import me.flashyreese.mods.sodiumextra.client.SodiumExtraClientMod;
 import me.flashyreese.mods.sodiumextra.client.config.SodiumExtraConfig;
 import net.anvian.sodiumextrainformation.client.SodiumExtraInformationClientMod;
+import net.anvian.sodiumextrainformation.options.SodiumExtraInformationGameOptions;
 import net.caffeinemc.mods.sodium.api.config.structure.ConfigBuilder;
 import net.caffeinemc.mods.sodium.api.config.structure.OptionPageBuilder;
 import net.minecraft.network.chat.Component;
@@ -20,58 +20,62 @@ public abstract class SodiumExtraConfigMixin {
         return Identifier.parse("sodium-extra:" + path);
     }
 
+    @Unique
+    private static final SodiumExtraInformationGameOptions OPTION = SodiumExtraInformationClientMod.options();
+
     @Inject(method = "createExtraPage", at = @At("RETURN"))
     private void injectCreateExtraPage(ConfigBuilder builder, CallbackInfoReturnable<OptionPageBuilder> cir) {
         OptionPageBuilder pageBuilder = cir.getReturnValue();
 
         pageBuilder.addOptionGroup(builder.createOptionGroup()
+                .setName(Component.translatable("sodium-extra-information.options.name"))
                 .addOption(builder.createBooleanOption(id("show_local_time"))
                         .setName(Component.translatable("sodium-extra-information.options.local_time"))
                         .setTooltip(Component.translatable("sodium-extra-information.options.local_time.tooltip"))
-                        .setStorageHandler(SodiumExtraClientMod.options())
-                        .setBinding(value -> SodiumExtraInformationClientMod.options().extraInformationSettings.localTimeConfig.showLocalTime = value, () -> SodiumExtraInformationClientMod.options().extraInformationSettings.localTimeConfig.showLocalTime)
+                        .setStorageHandler(OPTION::writeChanges)
+                        .setBinding(value -> OPTION.extraInformationSettings.localTimeConfig.showLocalTime = value, () -> OPTION.extraInformationSettings.localTimeConfig.showLocalTime)
                         .setDefaultValue(true))
                 .addOption(builder.createBooleanOption(id("show_word_time"))
                         .setName(Component.translatable("sodium-extra-information.options.word_time"))
                         .setTooltip(Component.translatable("sodium-extra-information.options.word_time.tooltip"))
-                        .setStorageHandler(SodiumExtraClientMod.options())
-                        .setBinding(value -> SodiumExtraInformationClientMod.options().extraInformationSettings.wordTimeConfig.showWordTime = value, () -> SodiumExtraInformationClientMod.options().extraInformationSettings.wordTimeConfig.showWordTime)
+                        .setStorageHandler(OPTION::writeChanges)
+                        .setBinding(value -> OPTION.extraInformationSettings.wordTimeConfig.showWordTime = value, () -> OPTION.extraInformationSettings.wordTimeConfig.showWordTime)
                         .setDefaultValue(true))
                 .addOption(builder.createBooleanOption(id("show_session_time"))
                         .setName(Component.translatable("sodium-extra-information.options.session_time"))
                         .setTooltip(Component.translatable("sodium-extra-information.options.session_time.tooltip"))
-                        .setStorageHandler(SodiumExtraClientMod.options())
-                        .setBinding(value -> SodiumExtraInformationClientMod.options().extraInformationSettings.sessionTimeConfig.showSessionTime = value, () -> SodiumExtraInformationClientMod.options().extraInformationSettings.sessionTimeConfig.showSessionTime)
+                        .setStorageHandler(OPTION::writeChanges)
+                        .setBinding(value -> OPTION.extraInformationSettings.sessionTimeConfig.showSessionTime = value, () -> OPTION.extraInformationSettings.sessionTimeConfig.showSessionTime)
                         .setDefaultValue(true))
                 .addOption(builder.createBooleanOption(id("show_memory_usage"))
                         .setName(Component.translatable("sodium-extra-information.options.memory_usage"))
                         .setTooltip(Component.translatable("sodium-extra-information.options.memory_usage.tooltip"))
-                        .setStorageHandler(SodiumExtraClientMod.options())
-                        .setBinding(value -> SodiumExtraInformationClientMod.options().extraInformationSettings.memoryUsageConfig.showMemoryUsage = value, () -> SodiumExtraInformationClientMod.options().extraInformationSettings.memoryUsageConfig.showMemoryUsage)
+                        .setStorageHandler(OPTION::writeChanges)
+                        .setBinding(value -> OPTION.extraInformationSettings.memoryUsageConfig.showMemoryUsage = value, () -> OPTION.extraInformationSettings.memoryUsageConfig.showMemoryUsage)
                         .setDefaultValue(true))
                 .addOption(builder.createBooleanOption(id("show_memory_usage_extended"))
                         .setName(Component.translatable("sodium-extra-information.options.memory_usage_extended"))
                         .setTooltip(Component.translatable("sodium-extra-information.options.memory_usage_extended.tooltip"))
-                        .setStorageHandler(SodiumExtraClientMod.options())
-                        .setBinding(value -> SodiumExtraInformationClientMod.options().extraInformationSettings.memoryUsageConfig.showMemoryUsageExtended = value, () -> SodiumExtraInformationClientMod.options().extraInformationSettings.memoryUsageConfig.showMemoryUsageExtended)
+                        .setStorageHandler(OPTION::writeChanges)
+                        .setBinding(value -> OPTION.extraInformationSettings.memoryUsageConfig.showMemoryUsageExtended = value, () -> OPTION.extraInformationSettings.memoryUsageConfig.showMemoryUsageExtended)
                         .setDefaultValue(true))
                 .addOption(builder.createBooleanOption(id("show_total_entity_count"))
                         .setName(Component.translatable("sodium-extra-information.options.show_total_entity_count"))
                         .setTooltip(Component.translatable("sodium-extra-information.options.show_total_entity_count.tooltip"))
-                        .setStorageHandler(SodiumExtraClientMod.options())
-                        .setBinding(value -> SodiumExtraInformationClientMod.options().extraInformationSettings.totalEntityCountConfig.showTotalEntityCount = value, () -> SodiumExtraInformationClientMod.options().extraInformationSettings.totalEntityCountConfig.showTotalEntityCount)
+                        .setStorageHandler(OPTION::writeChanges)
+                        .setBinding(value -> OPTION.extraInformationSettings.totalEntityCountConfig.showTotalEntityCount = value, () -> OPTION.extraInformationSettings.totalEntityCountConfig.showTotalEntityCount)
                         .setDefaultValue(true))
                 .addOption(builder.createBooleanOption(id("shows_rendered_entities"))
                         .setName(Component.translatable("sodium-extra-information.options.shows_rendered_entities"))
                         .setTooltip(Component.translatable("sodium-extra-information.options.shows_rendered_entities.tooltip"))
-                        .setStorageHandler(SodiumExtraClientMod.options())
-                        .setBinding(value -> SodiumExtraInformationClientMod.options().extraInformationSettings.renderedEntitiesConfig.showsRenderedEntities = value, () -> SodiumExtraInformationClientMod.options().extraInformationSettings.renderedEntitiesConfig.showsRenderedEntities)
+                        .setStorageHandler(OPTION::writeChanges)
+                        .setBinding(value -> OPTION.extraInformationSettings.renderedEntitiesConfig.showsRenderedEntities = value, () -> OPTION.extraInformationSettings.renderedEntitiesConfig.showsRenderedEntities)
                         .setDefaultValue(true))
                 .addOption(builder.createBooleanOption(id("show_biome"))
                         .setName(Component.translatable("sodium-extra-information.options.show_biome"))
                         .setTooltip(Component.translatable("sodium-extra-information.options.show_biome.tooltip"))
-                        .setStorageHandler(SodiumExtraClientMod.options())
-                        .setBinding(value -> SodiumExtraInformationClientMod.options().extraInformationSettings.biomeConfig.showBiome = value, () -> SodiumExtraInformationClientMod.options().extraInformationSettings.biomeConfig.showBiome)
+                        .setStorageHandler(OPTION::writeChanges)
+                        .setBinding(value -> OPTION.extraInformationSettings.biomeConfig.showBiome = value, () -> OPTION.extraInformationSettings.biomeConfig.showBiome)
                         .setDefaultValue(true)));
     }
 }

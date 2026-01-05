@@ -1,1 +1,4 @@
-- Port to 1.21.9/10
+- Neoforge support is now available!
+- Fixed error #23
+- tr_tr localization added
+- Update project dependencies 

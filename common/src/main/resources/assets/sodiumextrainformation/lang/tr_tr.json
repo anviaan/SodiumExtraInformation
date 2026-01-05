@@ -1,0 +1,22 @@
+{
+    "sodium-extra-information.options.local_time": "Yerel Saat",
+    "sodium-extra-information.options.local_time.tooltip": "Yer paylaşımında yerel saati gösterin.",
+    "sodium-extra-information.options.word_time": "Dünya Saati",
+    "sodium-extra-information.options.word_time.tooltip": "Kaplamada dünyada geçirilen süreyi (günleri) görüntüler.",
+    "sodium-extra-information.hud.word_time": "Gün",
+    "sodium-extra-information.options.session_time": "Oturum süresi",
+    "sodium-extra-information.options.session_time.tooltip": "Geçerli oturumda bulunduğunuz zamanı kaplamada gösterin.",
+    "sodium-extra-information.options.memory_usage": "Bellek kullanımı",
+    "sodium-extra-information.options.memory_usage.tooltip": "Kaplamada bellek kullanımını gösterin.",
+    "sodium-extra-information.options.memory_usage_extended": "Bellek kullanımı genişletildi",
+    "sodium-extra-information.options.memory_usage_extended.tooltip": "Kaplamada daha ayrıntılı bir bellek kullanımı gösterin.",
+    "sodium-extra-information.options.show_total_entity_count": "Toplam varlık sayısını göster",
+    "sodium-extra-information.options.show_total_entity_count.tooltip": "Dünyadaki toplam varlık sayısını gösterin.",
+    "sodium-extra-information.hud.show_total_entity_count": "Toplam Varlıklar",
+    "sodium-extra-information.options.shows_rendered_entities": "Oluşturulan Objeleri Göster",
+    "sodium-extra-information.options.shows_rendered_entities.tooltip": "Ekranda oluşturulan varlıkların sayısını gösterin.",
+    "sodium-extra-information.hud.shows_rendered_entities": "İşlenen Varlıklar",
+    "sodium-extra-information.options.show_biome": "Biyomu Göster",
+    "sodium-extra-information.options.show_biome.tooltip": "Bulunduğunuz biyomu gösterin.",
+    "sodium-extra-information.options.name": "Sodyum Ekstra Bilgi"
+}

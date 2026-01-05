@@ -35,11 +35,11 @@
     "sodiumextrainformation.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.17.3",
-    "sodium": ">=0.7.0",
-    "sodium-extra": ">=0.7.0",
-    "anvianslib": ">=1.3",
-    "minecraft": ">=1.21.9"
+    "fabricloader": ">=0.18.2",
+    "sodium": ">=0.8.2",
+    "sodium-extra": ">=0.8.2",
+    "anvianslib": ">=1.4",
+    "minecraft": ">=1.21.11"
   },
   "breaks": {
     "iris": "<1.7.0",

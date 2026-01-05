@@ -85,6 +85,7 @@ tasks.named("compileTestJava").configure {
 
 dependencies {
     compileOnly(project(":common"))
+    implementation("net.caffeinemc:sodium-neoforge-api:${SODIUM_VERSION}")
     implementation("net.caffeinemc:sodium-neoforge-mod:$SODIUM_VERSION")
     implementation("maven.modrinth:sodium-extra:$SODIUM_EXTRA_VERSION+neoforge")
 

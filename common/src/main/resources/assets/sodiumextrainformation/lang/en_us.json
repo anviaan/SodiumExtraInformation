@@ -24,5 +24,7 @@
   "sodium-extra-information.hud.shows_rendered_entities": "Rendered Entities",
 
   "sodium-extra-information.options.show_biome": "Show Biome",
-  "sodium-extra-information.options.show_biome.tooltip": "Show the biome you are in."
+  "sodium-extra-information.options.show_biome.tooltip": "Show the biome you are in.",
+
+  "sodium-extra-information.options.name": "Sodium Extra Information"
 }
