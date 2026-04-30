@@ -1,6 +1,8 @@
 {
     "sodium-extra-information.options.local_time": "현지 시간",
     "sodium-extra-information.options.local_time.tooltip": "오버레이에 현지 시간을 표시합니다.",
+    "sodium-extra-information.options.local_time_12h": "12시간제를 사용하세요",
+    "sodium-extra-information.options.local_time_12h.tooltip": "24시간 형식과 12시간 형식 간에 현지 시간 표시를 전환합니다.",
     "sodium-extra-information.options.word_time": "세계 시간",
     "sodium-extra-information.options.word_time.tooltip": "세계에서 보낸 시간(일)을 오버레이에 표시합니다.",
     "sodium-extra-information.hud.word_time": "낮",

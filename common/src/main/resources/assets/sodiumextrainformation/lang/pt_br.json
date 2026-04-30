@@ -1,6 +1,8 @@
 {
     "sodium-extra-information.options.local_time": "Hora local",
     "sodium-extra-information.options.local_time.tooltip": "Mostre a hora local na sobreposição.",
+    "sodium-extra-information.options.local_time_12h": "Use o horário de 12 horas",
+    "sodium-extra-information.options.local_time_12h.tooltip": "Alterne a exibição da hora local entre o formato de 24 horas e 12 horas.",
     "sodium-extra-information.options.word_time": "Hora Mundial",
     "sodium-extra-information.options.word_time.tooltip": "Exibe o tempo gasto no mundo (dias) na sobreposição.",
     "sodium-extra-information.hud.word_time": "Dia",

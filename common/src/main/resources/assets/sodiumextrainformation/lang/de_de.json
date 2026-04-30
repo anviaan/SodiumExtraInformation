@@ -1,6 +1,8 @@
 {
     "sodium-extra-information.options.local_time": "Ortszeit",
     "sodium-extra-information.options.local_time.tooltip": "Zeigen Sie die Ortszeit auf dem Overlay an.",
+    "sodium-extra-information.options.local_time_12h": "Verwenden Sie die 12-Stunden-Zeit",
+    "sodium-extra-information.options.local_time_12h.tooltip": "Schalten Sie die Ortszeitanzeige zwischen dem 24-Stunden- und dem 12-Stunden-Format um.",
     "sodium-extra-information.options.word_time": "Weltzeit",
     "sodium-extra-information.options.word_time.tooltip": "Zeigt die auf der Welt verbrachte Zeit (Tage) im Overlay an.",
     "sodium-extra-information.hud.word_time": "Tag",

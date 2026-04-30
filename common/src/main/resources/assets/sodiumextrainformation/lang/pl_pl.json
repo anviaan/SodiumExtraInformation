@@ -1,7 +1,9 @@
 {
     "sodium-extra-information.options.local_time": "Czas lokalny",
     "sodium-extra-information.options.local_time.tooltip": "Pokaż czas lokalny na nakładce.",
-    "sodium-extra-information.options.word_time": "Czas światowy",
+    "sodium-extra-information.options.local_time_12h": "Użyj czasu 12-godzinnego",
+    "sodium-extra-information.options.local_time_12h.tooltip": "Przełącz wyświetlanie czasu lokalnego pomiędzy formatem 24-godzinnym i 12-godzinnym.",
+    "sodium-extra-information.options.word_time": "Czas Światowy",
     "sodium-extra-information.options.word_time.tooltip": "Wyświetla czas spędzony na świecie (dni) w nakładce.",
     "sodium-extra-information.hud.word_time": "Dzień",
     "sodium-extra-information.options.session_time": "Czas sesji",

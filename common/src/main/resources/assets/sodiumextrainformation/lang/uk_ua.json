@@ -1,6 +1,8 @@
 {
     "sodium-extra-information.options.local_time": "Місцевий час",
     "sodium-extra-information.options.local_time.tooltip": "Показати місцевий час на накладці.",
+    "sodium-extra-information.options.local_time_12h": "Використовуйте 12-годинний час",
+    "sodium-extra-information.options.local_time_12h.tooltip": "Перемикання відображення місцевого часу між 24-годинним і 12-годинним форматами.",
     "sodium-extra-information.options.word_time": "Всесвітній час",
     "sodium-extra-information.options.word_time.tooltip": "Відображає час, проведений у світі (дні) у накладенні.",
     "sodium-extra-information.hud.word_time": "День",

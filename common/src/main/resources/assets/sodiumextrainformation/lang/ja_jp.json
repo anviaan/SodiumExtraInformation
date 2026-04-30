@@ -1,6 +1,8 @@
 {
     "sodium-extra-information.options.local_time": "現地時間",
     "sodium-extra-information.options.local_time.tooltip": "オーバーレイに現地時間を表示します。",
+    "sodium-extra-information.options.local_time_12h": "12 時間を使用する",
+    "sodium-extra-information.options.local_time_12h.tooltip": "現地時間の表示を 24 時間形式と 12 時間形式の間で切り替えます。",
     "sodium-extra-information.options.word_time": "ワールドタイム",
     "sodium-extra-information.options.word_time.tooltip": "世界で過ごした時間(日数)をオーバーレイで表示します。",
     "sodium-extra-information.hud.word_time": "日",

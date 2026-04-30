@@ -1,6 +1,8 @@
 {
     "sodium-extra-information.options.local_time": "当地时间",
     "sodium-extra-information.options.local_time.tooltip": "在叠加层上显示当地时间。",
+    "sodium-extra-information.options.local_time_12h": "使用12小时时间",
+    "sodium-extra-information.options.local_time_12h.tooltip": "在 24 小时和 12 小时格式之间切换本地时间显示。",
     "sodium-extra-information.options.word_time": "世界时间",
     "sodium-extra-information.options.word_time.tooltip": "在叠加层中显示在世界上花费的时间（天）。",
     "sodium-extra-information.hud.word_time": "天",

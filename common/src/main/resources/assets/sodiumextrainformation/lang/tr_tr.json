@@ -1,6 +1,8 @@
 {
     "sodium-extra-information.options.local_time": "Yerel Saat",
     "sodium-extra-information.options.local_time.tooltip": "Yer paylaşımında yerel saati gösterin.",
+    "sodium-extra-information.options.local_time_12h": "12 saatlik süreyi kullanın",
+    "sodium-extra-information.options.local_time_12h.tooltip": "Yerel saat gösterimini 24 saatlik ve 12 saatlik format arasında değiştirin.",
     "sodium-extra-information.options.word_time": "Dünya Saati",
     "sodium-extra-information.options.word_time.tooltip": "Kaplamada dünyada geçirilen süreyi (günleri) görüntüler.",
     "sodium-extra-information.hud.word_time": "Gün",

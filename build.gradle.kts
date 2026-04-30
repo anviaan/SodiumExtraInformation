@@ -13,9 +13,9 @@ val FABRIC_API_VERSION by extra { "0.140.0+1.21.11" }
 val PARCHMENT_VERSION by extra { null }
 
 // https://semver.org/
-val MAVEN_GROUP by extra { "net.anvian" }
-val ARCHIVE_NAME by extra { "sodium-extra-information" }
-val MOD_VERSION by extra { "2.7.0" }
+val MAVEN_GROUP by extra { "net.anvian.sodiumextrainformation" }
+val ARCHIVE_NAME by extra { "SodiumExtraInformation" }
+val MOD_VERSION by extra { "2.8.0" }
 val SODIUM_VERSION by extra { "0.8.2+mc1.21.11" }
 val SODIUM_EXTRA_VERSION by extra { "mc1.21.11-0.8.2" }
 val MODMENU_VERSION by extra { "17.0.0-beta.1" }
@@ -61,6 +61,34 @@ subprojects {
 
     version = MOD_VERSION
     group = MAVEN_GROUP
+
+    extensions.configure<PublishingExtension>("publishing") {
+        publications {
+            create<MavenPublication>("mavenJava") {
+                from(components["java"])
+                artifactId = "${project.name}-${MINECRAFT_VERSION}"
+            }
+        }
+
+        repositories {
+            maven {
+                name = "Reposilite"
+                url = uri(
+                    if (version.toString().endsWith("SNAPSHOT")) {
+                        "https://maven.anvian.net/snapshots"
+                    } else {
+                        "https://maven.anvian.net/releases"
+                    }
+                )
+                credentials {
+                    username = (project.findProperty("reposilite.user") as String?)
+                        ?: System.getenv("REPOSILITE_USER")
+                    password = (project.findProperty("reposilite.token") as String?)
+                        ?: System.getenv("REPOSILITE_TOKEN")
+                }
+            }
+        }
+    }
 
     tasks.withType<JavaCompile> {
         options.encoding = "UTF-8"
