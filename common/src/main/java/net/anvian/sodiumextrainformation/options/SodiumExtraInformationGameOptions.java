@@ -83,11 +83,13 @@ public class SodiumExtraInformationGameOptions {
 
         public static class LocalTimeConfig {
             public boolean showLocalTime;
+            public boolean use12HourFormat;
             public String localTimeFormat;
             public RGB color;
 
             public LocalTimeConfig() {
                 this.showLocalTime = false;
+                this.use12HourFormat = false;
                 this.localTimeFormat = "HH:mm";
                 this.color = new RGB();
             }

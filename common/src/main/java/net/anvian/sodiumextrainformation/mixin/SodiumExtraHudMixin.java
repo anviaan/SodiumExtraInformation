@@ -45,7 +45,9 @@ public class SodiumExtraHudMixin {
     private void sodiumextrainformation$displayLocalTime(SodiumExtraInformationGameOptions options) {
         if (options.extraInformationSettings.localTimeConfig.showLocalTime) {
             LocalDateTime now = LocalDateTime.now();
-            String timeFormat = options.extraInformationSettings.localTimeConfig.localTimeFormat;
+            String timeFormat = options.extraInformationSettings.localTimeConfig.use12HourFormat
+                    ? "hh:mm a"
+                    : "HH:mm";
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern(timeFormat);
             String formattedNow = now.format(formatter);
 
