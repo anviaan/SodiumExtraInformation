@@ -1,7 +1,7 @@
 plugins {
     id("java")
     id("idea")
-    id("fabric-loom") version ("1.14-SNAPSHOT")
+    id("net.fabricmc.fabric-loom") version ("1.15.4")
 }
 
 val MINECRAFT_VERSION: String by rootProject.extra
@@ -27,22 +27,17 @@ repositories {
 
 dependencies {
     minecraft("com.mojang:minecraft:${MINECRAFT_VERSION}")
-    mappings(loom.layered {
-        officialMojangMappings()
-        if (PARCHMENT_VERSION != null) {
-            parchment("org.parchmentmc.data:parchment-${MINECRAFT_VERSION}:${PARCHMENT_VERSION}@zip")
-        }
-    })
-    modImplementation("net.fabricmc:fabric-loader:$FABRIC_LOADER_VERSION")
+    compileOnly("net.fabricmc:fabric-loader:$FABRIC_LOADER_VERSION")
 
-    modImplementation("net.fabricmc.fabric-api:fabric-api:$FABRIC_API_VERSION")
+    implementation("net.fabricmc.fabric-api:fabric-api:$FABRIC_API_VERSION")
 
     compileOnly(project(":common"))
-    modImplementation("net.caffeinemc:sodium-fabric:$SODIUM_VERSION")
-    modImplementation("maven.modrinth:sodium-extra:$SODIUM_EXTRA_VERSION+fabric")
-    modLocalRuntime("com.terraformersmc:modmenu:$MODMENU_VERSION")
+    implementation("net.caffeinemc:sodium-fabric:$SODIUM_VERSION")
+    implementation("maven.modrinth:sodium-extra:$SODIUM_EXTRA_VERSION+fabric")
+    localRuntime("com.terraformersmc:modmenu:$MODMENU_VERSION")
 
-    modImplementation("net.anvian.anvianslib:anvianslib-fabric-1.21.10:$ANVIANS_LIB")
+    compileOnly("net.anvian.anvianslib:anvianslib-fabric-26.1:$ANVIANS_LIB")
+    localRuntime("net.anvian.anvianslib:anvianslib-fabric-26.1:$ANVIANS_LIB")
 }
 
 tasks.test {
@@ -91,4 +86,8 @@ tasks {
     jar {
         from(rootDir.resolve("LICENSE.txt"))
     }
+}
+
+tasks.named("validateAccessWidener").configure {
+    dependsOn(":common:genSourcesWithVineflower")
 }

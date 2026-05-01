@@ -62,7 +62,7 @@ public class SodiumExtraHudMixin {
             return;
         }
 
-        long worldTime = client.level.getDayTime();
+        long worldTime = client.level.getLevelData().getGameTime();
         long currentDay = worldTime / 24000;
         textList.add(Component.translatable("sodium-extra-information.hud.word_time")
                 .append(": ")

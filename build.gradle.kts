@@ -1,28 +1,23 @@
 plugins {
     id("java")
-    id("fabric-loom") version ("1.14-SNAPSHOT") apply (false)
+    id("net.fabricmc.fabric-loom") version ("1.15.4") apply (false)
 }
 
-val MINECRAFT_VERSION by extra { "1.21.11" }
-val NEOFORGE_VERSION by extra { "21.11.24-beta" }
-val FABRIC_LOADER_VERSION by extra { "0.18.2" }
-val FABRIC_API_VERSION by extra { "0.140.0+1.21.11" }
-
-
-// This value can be set to null to disable Parchment.
-val PARCHMENT_VERSION by extra { null }
+val MINECRAFT_VERSION by extra { "26.1.1" }
+val NEOFORGE_VERSION by extra { "26.1.1.2-beta" }
+val FABRIC_LOADER_VERSION by extra { "0.18.6" }
+val FABRIC_API_VERSION by extra { "0.145.3+26.1.1" }
 
 // https://semver.org/
 val MAVEN_GROUP by extra { "net.anvian.sodiumextrainformation" }
 val ARCHIVE_NAME by extra { "SodiumExtraInformation" }
-val MOD_VERSION by extra { "2.8.0" }
-val SODIUM_VERSION by extra { "0.8.2+mc1.21.11" }
-val SODIUM_EXTRA_VERSION by extra { "mc1.21.11-0.8.2" }
-val MODMENU_VERSION by extra { "17.0.0-beta.1" }
+val MOD_VERSION by extra { "2.9.0" }
+val SODIUM_VERSION by extra { "0.8.9+mc26.1.1" }
+val SODIUM_EXTRA_VERSION by extra { "mc26.1.1-0.8.7" }
+val MODMENU_VERSION by extra { "18.0.0-alpha.8" }
 
 val ANVIANS_LIB by extra {"1.4"}
-
-val COMPATIBLE_VERSIONS by extra { "[1.21.11, 1.22)" }
+val COMPATIBLE_VERSIONS by extra { "[26.1, 27)" }
 
 allprojects {
     apply(plugin = "java")
@@ -51,7 +46,7 @@ subprojects {
         archivesName = "$ARCHIVE_NAME-${project.name}"
     }
 
-    java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+    java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
     tasks.processResources {
         filesMatching("META-INF/neoforge.mods.toml") {
@@ -92,7 +87,7 @@ subprojects {
 
     tasks.withType<JavaCompile> {
         options.encoding = "UTF-8"
-        options.release.set(21)
+        options.release.set(25)
     }
 
     tasks.withType<GenerateModuleMetadata>().configureEach {

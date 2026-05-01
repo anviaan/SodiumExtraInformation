@@ -1,6 +1,6 @@
 plugins {
     id("idea")
-    id("net.neoforged.moddev") version "2.0.123"
+    id("net.neoforged.moddev") version "2.0.141"
     id("java-library")
 }
 
@@ -85,11 +85,12 @@ tasks.named("compileTestJava").configure {
 
 dependencies {
     compileOnly(project(":common"))
-    implementation("net.caffeinemc:sodium-neoforge-api:${SODIUM_VERSION}")
     implementation("net.caffeinemc:sodium-neoforge-mod:$SODIUM_VERSION")
+    implementation("net.caffeinemc:sodium-neoforge-api:${SODIUM_VERSION}")
+    implementation("net.caffeinemc:sodium-neoforge:${SODIUM_VERSION}")
     implementation("maven.modrinth:sodium-extra:$SODIUM_EXTRA_VERSION+neoforge")
 
-    implementation("net.anvian.anvianslib:anvianslib-neoforge-1.21:${ANVIANS_LIB}")
+    implementation("net.anvian.anvianslib:anvianslib-neoforge-26.1:${ANVIANS_LIB}")
 }
 
 // NeoGradle compiles the game, but we don't want to add our common code to the game's code
@@ -109,4 +110,4 @@ tasks.withType<ProcessResources>().matching(notNeoTask).configureEach {
     from(project(":common").sourceSets.main.get().resources)
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
