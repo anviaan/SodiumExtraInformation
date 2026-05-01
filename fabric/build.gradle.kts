@@ -67,7 +67,7 @@ loom {
 }
 
 tasks {
-    withType<JavaCompile> {
+    named<JavaCompile>("compileJava") {
         source(project(":common").sourceSets.main.get().allSource)
     }
 
