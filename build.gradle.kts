@@ -12,7 +12,7 @@ val FABRIC_API_VERSION by extra { "0.134.0+1.21.9" }
 val PARCHMENT_VERSION by extra { null }
 
 // https://semver.org/
-val MAVEN_GROUP by extra { "me.flashyreese.mods" }
+val MAVEN_GROUP by extra { "net.anvian.sodiumextrainformation" }
 val ARCHIVE_NAME by extra { "sodium-extra" }
 val MOD_VERSION by extra { "2.7.0" }
 val SODIUM_VERSION by extra { "mc1.21.9-0.7.0" }
