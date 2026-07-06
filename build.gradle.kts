@@ -1,33 +1,33 @@
 plugins {
     id("java")
-    id("fabric-loom") version ("1.8.9") apply (false)
+    id("fabric-loom") version ("1.16.1") apply (false)
 }
 
-val MINECRAFT_VERSION by extra { "1.21.1" }
-val NEOFORGE_VERSION by extra { "21.1.83" }
-val FABRIC_LOADER_VERSION by extra { "0.16.9" }
-val FABRIC_API_VERSION by extra { "0.110.0+1.21.1" }
+extra.set("MINECRAFT_VERSION", "1.21.1")
+extra.set("NEOFORGE_VERSION", "21.1.230")
+extra.set("FABRIC_LOADER_VERSION", "0.19.2")
+extra.set("FABRIC_API_VERSION", "0.116.12+1.21.1")
 
 // This value can be set to null to disable Parchment.
-val PARCHMENT_VERSION by extra { null }
+extra.set("PARCHMENT_VERSION", null)
 
 // https://semver.org/
-val MAVEN_GROUP by extra { "net.anvian.sodiumextrainformation" }
-val ARCHIVE_NAME by extra { "SodiumExtraInformation" }
-val MOD_VERSION by extra { "2.6.0" }
-val SODIUM_VERSION by extra { "mc1.21-0.6.0-beta.2" }
-val SODIUM_EXTRA_VERSION by extra { "mc1.21.1-0.6.0-beta.3" }
-val MODMENU_VERSION by extra { "11.0.3" }
+extra.set("MAVEN_GROUP", "net.anvian.sodiumextrainformation")
+extra.set("ARCHIVE_NAME", "SodiumExtraInformation")
+extra.set("MOD_VERSION", "2.6.0")
+extra.set("SODIUM_VERSION", "0.8.12+mc1.21.1")
+extra.set("SODIUM_EXTRA_VERSION", "mc1.21.1-0.9.1")
+extra.set("MODMENU_VERSION", "11.0.3")
 
-val ANVIANS_LIB by extra { "1.4" }
+extra.set("ANVIANS_LIB", "1.4.1")
 
-val COMPATIBLE_VERSIONS by extra { "[1.21, 1.21.2)" }
+extra.set("COMPATIBLE_VERSIONS", "[1.21.1, 1.21.2)")
 
 allprojects {
     apply(plugin = "java")
     apply(plugin = "maven-publish")
-    group = MAVEN_GROUP
-    version = MOD_VERSION
+    group = rootProject.extra["MAVEN_GROUP"] as String
+    version = rootProject.extra["MOD_VERSION"] as String
 }
 
 tasks.withType<JavaCompile> {
@@ -37,33 +37,41 @@ tasks.withType<JavaCompile> {
 subprojects {
     apply(plugin = "maven-publish")
 
+    val modVersion = rootProject.extra["MOD_VERSION"] as String
+    val archiveName = rootProject.extra["ARCHIVE_NAME"] as String
+    val mavenGroup = rootProject.extra["MAVEN_GROUP"] as String
+    val minecraftVersion = rootProject.extra["MINECRAFT_VERSION"] as String
+    val compatibleVersions = rootProject.extra["COMPATIBLE_VERSIONS"] as String
+
     repositories {
         maven("https://maven.parchmentmc.org/")
+        maven("https://maven.caffeinemc.net/releases")
+        maven("https://maven.caffeinemc.net/snapshots")
         maven("https://api.modrinth.com/maven")
         maven("https://libraries.minecraft.net")
         maven("https://repo.repsy.io/mvn/anvian/anvians-lib")
     }
 
     base {
-        archivesName = "$ARCHIVE_NAME-${project.name}"
+        archivesName = "$archiveName-${project.name}"
     }
 
     java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
     tasks.processResources {
         filesMatching("META-INF/neoforge.mods.toml") {
-            expand(mapOf("version" to { MOD_VERSION }))
+            expand(mapOf("version" to { modVersion }))
         }
     }
 
-    version = MOD_VERSION
-    group = MAVEN_GROUP
+    version = modVersion
+    group = mavenGroup
 
     extensions.configure<PublishingExtension>("publishing") {
         publications {
             create<MavenPublication>("mavenJava") {
                 from(components["java"])
-                artifactId = "${project.name}-${MINECRAFT_VERSION}"
+                artifactId = "${project.name}-$minecraftVersion"
             }
         }
 
@@ -99,9 +107,9 @@ subprojects {
     tasks.register("printEnv") {
         doLast {
             val envFile = File(System.getenv("GITHUB_ENV"))
-            envFile.appendText("MOD_VERSION=$MOD_VERSION\n")
-            envFile.appendText("RELEASE_NAME=$ARCHIVE_NAME-$MOD_VERSION\n")
-            envFile.appendText("GAME_VERSIONS=$COMPATIBLE_VERSIONS\n")
+            envFile.appendText("MOD_VERSION=$modVersion\n")
+            envFile.appendText("RELEASE_NAME=$archiveName-$modVersion\n")
+            envFile.appendText("GAME_VERSIONS=$compatibleVersions\n")
         }
     }
 }

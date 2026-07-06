@@ -1,34 +1,29 @@
 plugins {
     id("idea")
-    id("net.neoforged.moddev") version "1.0.11"
+    id("net.neoforged.moddev") version "2.0.141"
     id("java-library")
 }
 
-val MINECRAFT_VERSION: String by rootProject.extra
-val PARCHMENT_VERSION: String? by rootProject.extra
-val NEOFORGE_VERSION: String by rootProject.extra
-val MOD_VERSION: String by rootProject.extra
+val MINECRAFT_VERSION = rootProject.extra["MINECRAFT_VERSION"] as String
+val PARCHMENT_VERSION = rootProject.extra["PARCHMENT_VERSION"] as String?
+val NEOFORGE_VERSION = rootProject.extra["NEOFORGE_VERSION"] as String
+val MOD_VERSION = rootProject.extra["MOD_VERSION"] as String
 
-val SODIUM_VERSION: String by rootProject.extra
-val SODIUM_EXTRA_VERSION: String by rootProject.extra
-val ARCHIVE_NAME: String by rootProject.extra
+val SODIUM_VERSION = rootProject.extra["SODIUM_VERSION"] as String
+val SODIUM_EXTRA_VERSION = rootProject.extra["SODIUM_EXTRA_VERSION"] as String
+val ARCHIVE_NAME = rootProject.extra["ARCHIVE_NAME"] as String
 
-val ANVIANS_LIB: String by rootProject.extra
+val ANVIANS_LIB = rootProject.extra["ANVIANS_LIB"] as String
 
 base {
     archivesName = "$ARCHIVE_NAME-neoforge"
 }
 
 repositories {
-    maven("https://maven.pkg.github.com/ims212/Forge_Fabric_API") {
-        credentials {
-            username = "IMS212"
-            // Read only token
-            password = "ghp_" + "DEuGv0Z56vnSOYKLCXdsS9svK4nb9K39C1Hn"
-        }
-    }
     maven("https://maven.su5ed.dev/releases")
     maven("https://maven.neoforged.net/releases/")
+    maven("https://maven.caffeinemc.net/releases")
+    maven("https://maven.caffeinemc.net/snapshots")
 
     exclusiveContent {
         forRepository {
@@ -55,14 +50,19 @@ neoForge {
     // Specify the version of NeoForge to use.
     version = NEOFORGE_VERSION
 
-    parchment {
+    /*parchment {
         mappingsVersion = PARCHMENT_VERSION
         minecraftVersion = MINECRAFT_VERSION
-    }
+    }*/
 
     runs {
         create("client") {
             client()
+            ideName = "NeoForge/Client"
+            val sodiumRuntime =
+                project.dependencies.create("net.caffeinemc:sodium-neoforge:$SODIUM_VERSION") as ExternalModuleDependency
+            sodiumRuntime.isTransitive = false
+            getAdditionalRuntimeClasspathConfiguration().dependencies.add(sodiumRuntime)
         }
     }
 
@@ -89,14 +89,17 @@ tasks.named("compileTestJava").configure {
 
 dependencies {
     compileOnly(project(":common"))
-    implementation("maven.modrinth:sodium:$SODIUM_VERSION-neoforge")
+    implementation("net.caffeinemc:sodium-neoforge-mod:$SODIUM_VERSION")
+    compileOnly("net.caffeinemc:sodium-neoforge-api:${SODIUM_VERSION}")
     implementation("maven.modrinth:sodium-extra:$SODIUM_EXTRA_VERSION+neoforge")
 
-    implementation("net.anvian.anvianslib:anvianslib-neoforge-1.21:$ANVIANS_LIB")
+    implementation("net.anvian.anvianslib:anvianslib-neoforge-1.21:${ANVIANS_LIB}")
 }
 
 // NeoGradle compiles the game, but we don't want to add our common code to the game's code
-val notNeoTask: (Task) -> Boolean = { it: Task -> !it.name.startsWith("neo") && !it.name.startsWith("compileService") }
+val notNeoTask: (Task) -> Boolean = { it: Task ->
+    !it.name.startsWith("neo") && !it.name.startsWith("compileService")
+}
 
 tasks.withType<JavaCompile>().matching(notNeoTask).configureEach {
     source(project(":common").sourceSets.main.get().allSource)
