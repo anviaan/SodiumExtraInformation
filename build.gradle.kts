@@ -14,7 +14,7 @@ extra.set("PARCHMENT_VERSION", null)
 // https://semver.org/
 extra.set("MAVEN_GROUP", "net.anvian.sodiumextrainformation")
 extra.set("ARCHIVE_NAME", "SodiumExtraInformation")
-extra.set("MOD_VERSION", "2.6.0")
+extra.set("MOD_VERSION", "2.7.0")
 extra.set("SODIUM_VERSION", "0.8.12+mc1.21.1")
 extra.set("SODIUM_EXTRA_VERSION", "mc1.21.1-0.9.1")
 extra.set("MODMENU_VERSION", "11.0.3")
@@ -60,7 +60,7 @@ subprojects {
 
     tasks.processResources {
         filesMatching("META-INF/neoforge.mods.toml") {
-            expand(mapOf("version" to { modVersion }))
+            expand(mapOf("version" to modVersion))
         }
     }
 

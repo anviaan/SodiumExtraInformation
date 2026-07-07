@@ -43,3 +43,6 @@ config = "sodiumextrainformation.mixins.json"
 
 [[mixins]]
 config = "sodiumextrainformation-neoforge.mixin.json"
+
+[modproperties.sodiumextrainformation]
+"sodium:config_api_user" = "net.anvian.sodiumextrainformation.client.SodiumExtraInformationConfig"
