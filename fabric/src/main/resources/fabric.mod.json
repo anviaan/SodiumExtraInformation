@@ -36,10 +36,11 @@
   ],
   "depends": {
     "fabricloader": ">=0.18.2",
-    "sodium": ">=0.8.2",
-    "sodium-extra": ">=0.8.2",
-    "anvianslib": ">=1.4",
-    "minecraft": ">=1.21.11"
+    "sodium": ">=0.8.9",
+    "sodium-extra": ">=0.8.7",
+    "anvianslib": ">=${anviansLibVersion}",
+    "minecraft": ">=26.1",
+    "java": ">=25"
   },
   "breaks": {
     "iris": "<1.7.0",

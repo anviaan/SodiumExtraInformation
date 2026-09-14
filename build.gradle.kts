@@ -16,7 +16,7 @@ val SODIUM_VERSION by extra { "0.8.9+mc26.1.1" }
 val SODIUM_EXTRA_VERSION by extra { "mc26.1.1-0.8.7" }
 val MODMENU_VERSION by extra { "18.0.0-alpha.8" }
 
-val ANVIANS_LIB by extra {"1.4"}
+val ANVIANS_LIB by extra { "1.5.0" }
 val COMPATIBLE_VERSIONS by extra { "[26.1, 27)" }
 
 allprojects {
@@ -39,7 +39,7 @@ subprojects {
         maven("https://maven.caffeinemc.net/snapshots")
         maven("https://api.modrinth.com/maven")
         maven("https://libraries.minecraft.net")
-        maven("https://repo.repsy.io/mvn/anvian/anvians-lib")
+        maven("https://maven.anvian.net/releases")
     }
 
     base {
@@ -50,7 +50,13 @@ subprojects {
 
     tasks.processResources {
         filesMatching("META-INF/neoforge.mods.toml") {
-            expand(mapOf("version" to { MOD_VERSION }))
+            expand(
+                mapOf(
+                    "version" to MOD_VERSION,
+                    "minecraftVersionRange" to COMPATIBLE_VERSIONS,
+                    "anviansLibVersion" to ANVIANS_LIB
+                )
+            )
         }
     }
 

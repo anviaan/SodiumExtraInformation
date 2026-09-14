@@ -1,9 +1,9 @@
 package net.anvian.sodiumextrainformation.client;
 
+import net.anvian.anvianslib.platform.Services;
 import net.anvian.anvianslib.util.LibUtil;
 import net.anvian.sodiumextrainformation.options.SodiumExtraInformationGameOptions;
 import net.anvian.sodiumextrainformation.util.SessionManager;
-import net.caffeinemc.mods.sodium.client.services.PlatformRuntimeInformation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,7 +34,7 @@ public class SodiumExtraInformationClientMod {
     }
 
     private static SodiumExtraInformationGameOptions loadConfig() {
-        return SodiumExtraInformationGameOptions.load(PlatformRuntimeInformation.getInstance().getConfigDirectory().resolve(MOD_ID).resolve("sodium-extra-information-options.json").toFile());
+        return SodiumExtraInformationGameOptions.load(Services.PLATFORM.getConfigPath().resolve(MOD_ID).resolve("sodium-extra-information-options.json").toFile());
     }
 
 

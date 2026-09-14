@@ -1,4 +1,2 @@
-- Neoforge support is now available!
-- Fixed error #23
-- tr_tr localization added
-- Update project dependencies 
+- Update dependencies and versioning for compatibility with Minecraft 26.1
+- Enhance mod configuration

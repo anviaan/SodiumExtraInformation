@@ -20,28 +20,28 @@ A Sodium Extra addon that adds more in-game information.
 [[dependencies.sodiumextrainformation]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21.11,1.22)"
+versionRange = "${minecraftVersionRange}"
 ordering = "NONE"
 side = "CLIENT"
 
 [[dependencies.sodiumextrainformation]]
 modId = "sodium"
 type = "required"
-versionRange = "[0.8.2,)"
+versionRange = "[0.8.9,)"
 ordering = "NONE"
 side = "CLIENT"
 
 [[dependencies.sodiumextrainformation]]
 modId = "sodium_extra"
 type = "required"
-versionRange = "[0.8.2,)"
+versionRange = "[0.8.7,)"
 ordering = "NONE"
 side = "CLIENT"
 
 [[dependencies.sodiumextrainformation]]
 modId = "anvianslib"
 type = "required"
-versionRange = "[1.4,)"
+versionRange = "[${anviansLibVersion},)"
 ordering = "NONE"
 side = "CLIENT"
 
@@ -50,3 +50,6 @@ config = "sodiumextrainformation.mixins.json"
 
 [[mixins]]
 config = "sodiumextrainformation-neoforge.mixin.json"
+
+[features.sodiumextrainformation]
+javaVersion = "[25,)"
