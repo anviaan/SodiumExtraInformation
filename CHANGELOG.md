@@ -1,2 +1,1 @@
-- Update dependencies and versioning for compatibility with Minecraft 26.1
-- Enhance mod configuration
+- Fix rendered entity count in the HUD to match the F3 debug screen

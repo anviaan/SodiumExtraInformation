@@ -11,7 +11,7 @@ val FABRIC_API_VERSION by extra { "0.145.3+26.1.1" }
 // https://semver.org/
 val MAVEN_GROUP by extra { "net.anvian.sodiumextrainformation" }
 val ARCHIVE_NAME by extra { "SodiumExtraInformation" }
-val MOD_VERSION by extra { "2.9.0" }
+val MOD_VERSION by extra { "2.9.1" }
 val SODIUM_VERSION by extra { "0.8.9+mc26.1.1" }
 val SODIUM_EXTRA_VERSION by extra { "mc26.1.1-0.8.7" }
 val MODMENU_VERSION by extra { "18.0.0-alpha.8" }

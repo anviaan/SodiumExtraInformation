@@ -124,7 +124,7 @@ public class SodiumExtraHudMixin {
         }
 
         LevelRendererAccessor accessor = (LevelRendererAccessor) client.levelRenderer;
-        int renderedEntities = accessor.getLevelRenderState().entityRenderStates.size();
+        int renderedEntities = accessor.getLevelRenderState().lastEntityRenderStateCount;
         textList.add(Component.translatable("sodium-extra-information.hud.shows_rendered_entities")
                 .append(": ")
                 .append(String.valueOf(renderedEntities))

@@ -6,7 +6,7 @@ issueTrackerURL="https://github.com/anviaan/SodiumExtraInformation/issues"
 [[mods]]
 modId = "sodiumextrainformation"
 
-version = "2.3"
+version = "${version}"
 displayName = "Sodium Extra Information"
 
 logoFile = "sodiumextrainformation.png"
