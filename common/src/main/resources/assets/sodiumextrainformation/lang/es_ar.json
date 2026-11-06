@@ -1,28 +1,28 @@
 {
   "sodium-extra-information.options.local_time": "Hora local",
-  "sodium-extra-information.options.local_time.tooltip": "Muestra la hora local en la superposición.",
+  "sodium-extra-information.options.local_time.tooltip": "Muestra la hora local en pantalla.",
   "sodium-extra-information.options.local_time_12h": "Usar formato de 12 horas",
-  "sodium-extra-information.options.local_time_12h.tooltip": "Cambia la visualización de la hora local entre el formato de 24 horas y el de 12 horas.",
+  "sodium-extra-information.options.local_time_12h.tooltip": "Alterna entre los formatos de 24 y 12 horas para mostrar la hora local.",
 
   "sodium-extra-information.options.word_time": "Días transcurridos",
-  "sodium-extra-information.options.word_time.tooltip": "Muestra los días transcurridos en el mundo en la superposición.",
+  "sodium-extra-information.options.word_time.tooltip": "Muestra cuántos días transcurrieron en el mundo.",
   "sodium-extra-information.hud.word_time": "Día",
 
   "sodium-extra-information.options.session_time": "Tiempo de sesión",
-  "sodium-extra-information.options.session_time.tooltip": "Muestra el tiempo que llevás en la sesión actual en la superposición.",
+  "sodium-extra-information.options.session_time.tooltip": "Muestra cuánto tiempo llevás en la sesión actual.",
 
   "sodium-extra-information.options.memory_usage": "Uso de memoria",
-  "sodium-extra-information.options.memory_usage.tooltip": "Muestra el uso de memoria en la superposición.",
+  "sodium-extra-information.options.memory_usage.tooltip": "Muestra el uso de memoria en pantalla.",
 
   "sodium-extra-information.options.memory_usage_extended": "Uso de memoria detallado",
-  "sodium-extra-information.options.memory_usage_extended.tooltip": "Muestra información más detallada sobre el uso de memoria en la superposición.",
+  "sodium-extra-information.options.memory_usage_extended.tooltip": "Muestra información más detallada sobre el uso de memoria en pantalla.",
 
-  "sodium-extra-information.options.show_total_entity_count": "Mostrar cantidad total de entidades",
-  "sodium-extra-information.options.show_total_entity_count.tooltip": "Muestra la cantidad total de entidades en el mundo.",
-  "sodium-extra-information.hud.show_total_entity_count": "Entidades totales",
+  "sodium-extra-information.options.show_total_entity_count": "Mostrar el total de entidades",
+  "sodium-extra-information.options.show_total_entity_count.tooltip": "Muestra el total de entidades del mundo.",
+  "sodium-extra-information.hud.show_total_entity_count": "Total de entidades",
 
   "sodium-extra-information.options.shows_rendered_entities": "Mostrar entidades renderizadas",
-  "sodium-extra-information.options.shows_rendered_entities.tooltip": "Muestra la cantidad de entidades que se están renderizando en pantalla.",
+  "sodium-extra-information.options.shows_rendered_entities.tooltip": "Muestra cuántas entidades se están renderizando en pantalla.",
   "sodium-extra-information.hud.shows_rendered_entities": "Entidades renderizadas",
 
   "sodium-extra-information.options.show_biome": "Mostrar bioma",
